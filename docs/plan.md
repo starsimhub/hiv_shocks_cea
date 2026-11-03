@@ -15,8 +15,8 @@
 | Sprint | Dates | Work | Deliverable |
 |---|---|---|---|
 | **2** | 27 Oct–2 Nov | Scoping doc: interventions, shocks (timing, depth and duration), outcomes, and the cost-effectiveness framework (Daniel's choice) | `docs/scoping.md`, agreed with Robyn |
-| **3** | 3–9 Nov | Get Adam's calibrated Eswatini model running on Starsim v4, alongside the HIVsim v4 port; pin versions. Design the costing analyzer (as a stisim issue) | Eswatini baseline on v4; analyzer design issue |
-| **4** | 10–16 Nov | Build the costing analyzer on a stisim branch | Analyzer PR open, with tests |
+| **3** | 3–9 Nov | Update Adam's calibrated Eswatini model to include 90-90-90 art coverage metrics as calibration targets + PrEP | Convert Eswatini model to run on Starsim v4, alongside the HIVsim v4 port; pin versions. Design the costing analyzer (as a stisim issue). Eswatini baseline on v4; analyzer design issue |
+| **4** | 10–16 Nov | Scoping document Build the costing analyzer on a stisim branch | Analyzer PR open, with tests |
 | **5** | 17–23 Nov | Assemble Eswatini cost inputs with sources; merge the analyzer; run and sanity-check the costed baseline | `results/cost_inputs.csv`; baseline costs and outcomes; **Phase 1 done** |
 | **6** | 24–30 Nov | Implement the shock mechanics (e.g. ART funding loss, commodity supply disruption) | Shock scenarios run end to end |
 | **7** | 1–7 Dec | Implement the intervention scenarios; run a pilot grid locally (all interventions × one shock, few draws) | First ICER table and ranking |
