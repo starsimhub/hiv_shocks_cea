@@ -88,7 +88,7 @@ class PrepInitiations(sti.Prep):
             hiv.stop_prep(expiring.uids)
 
         year = int(np.floor(self.t.now('year') + 1e-9))
-        n_float = self.annual_n.get(year, 0.0) / sim.pars.pop_scale * self._dt_years + self._carry
+        n_float = self.annual_n.get(year, 0.0) / sim.pop_scale * self._dt_years + self._carry
         n_want = int(n_float)
         self._carry = n_float - n_want
 

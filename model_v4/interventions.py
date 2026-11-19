@@ -183,11 +183,12 @@ def get_testing_products(testing_pars=None):
         label='low_cd4_testing',
     )
 
-    # ANC testing: test undiagnosed pregnant women in first trimester
+    # ANC testing: test undiagnosed pregnant women in first trimester.
+    # Starsim 4's Pregnancy has no trimesters: the first trimester is the first
+    # 13 weeks in state P (as stisim v4's own ANC example and BV do).
     def anc_eligibility(sim):
-        return sim.demographics.pregnancy.tri1_uids[
-            ~sim.diseases.hiv.diagnosed[sim.demographics.pregnancy.tri1_uids]
-        ]
+        preg = sim.demographics.pregnancy
+        return preg.P & (preg.P.time_in < ss.weeks(13)) & ~sim.diseases.hiv.diagnosed
 
     if testing_pars is not None and testing_pars.get('anc', False):
         anc_years = np.arange(1985, 2041)

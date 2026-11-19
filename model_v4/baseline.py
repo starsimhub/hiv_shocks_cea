@@ -67,7 +67,7 @@ def cascade_kw(path=HERE / "params" / "calib2d_chosen.json"):
         art_coverage="cohorts", vmmc_shims2=True)
 
 
-def make_baseline_sim(seed=1, start=1985, stop=2026, verbose=-1, **kwargs):
+def make_baseline_sim(seed=1, start=1985, stop=2026, verbose=0, **kwargs):
     """The calibrated baseline. kwargs pass through to run_sims.make_sim
     (e.g. analyzers=, extra_interventions=) and override the defaults here."""
     hiv_pars, network_pars = build_pars()
@@ -81,10 +81,16 @@ if __name__ == "__main__":
     sim = make_baseline_sim(seed=1)
     sim.run()
     df = sim.to_df(resample="year", use_years=True, sep=".")
+    # The reference is the Starsim 3.7.2 run (model_3_7_2): its time column is
+    # 'timevec' (v4: 'time'), and v3 result names are mapped to v4's here. It is
+    # a different random stream, and v4 records stocks at the start of a step,
+    # so compare over several seeds, not run for run.
     ref = sc.loadobj(HERE / "reference" / "baseline_027d_10seeds.df")
-    ref = ref[ref.seed == 1]
-    for col in ("hiv.prevalence", "hiv.new_infections", "hiv.new_deaths"):
-        if col in df and col in ref:
-            print(col, {y: (round(float(df.loc[df.timevec == y, col].iloc[0]), 4),
-                            round(float(ref.loc[ref.timevec == y, col].iloc[0]), 4))
-                        for y in (2007, 2017, 2021)}, "(this run, reference)")
+    ref = ref.groupby("timevec").mean(numeric_only=True)
+    pairs = {"hiv.prevalence": "hiv.prevalence", "hiv.new_infections": "hiv.new_infections",
+             "hiv.new_deaths": "hiv.new_deaths", "hiv.n_on_art": "hiv.on_art"}
+    for v3_col, v4_col in pairs.items():
+        if v4_col in df and v3_col in ref:
+            print(v4_col, {y: (round(float(df.loc[df.time == y, v4_col].iloc[0]), 4),
+                               round(float(ref.loc[y, v3_col]), 4))
+                           for y in (2007, 2017, 2021)}, "(this run, 3.7.2 reference mean)")

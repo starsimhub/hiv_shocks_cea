@@ -41,8 +41,8 @@ def make_sim(seed=1, start=1985, stop=2031, verbose=1/12, analyzers=None,
         prop_f2=0.1,  # 60% LR, 30% MR, 10% HR
         prop_m0=0.5,
         prop_m2=0.1,  # 50% LR, 50% MR, 10% HR
-        debut_f=ss.lognorm_ex(17.5, 1),  # DHS eSwatini: median ~17-18yr for women
-        debut_m=ss.lognorm_ex(18.5, 1),  # DHS eSwatini: median ~18-19yr for men
+        debut_f=ss.lognormal(17.5, 1),  # DHS eSwatini: median ~17-18yr for women
+        debut_m=ss.lognormal(18.5, 1),  # DHS eSwatini: median ~18-19yr for men
         f1_conc=0.15,
         f2_conc=0.25,
         m1_conc=0.15,
@@ -55,8 +55,8 @@ def make_sim(seed=1, start=1985, stop=2031, verbose=1/12, analyzers=None,
     if network_pars:
         network_kwargs.update(network_pars)
     sexual = sti.StructuredSexual(**network_kwargs)
-    maternal = ss.MaternalNet()
-    networks = [sexual, maternal]
+    prenatal = ss.PrenatalNet()
+    networks = [sexual, prenatal]
 
     # Diseases. rel_beta_f2m=0.25 (M->F per-act risk is 4x F->M) chosen in
     # experiment 004 to reproduce the PHIA F:M incidence ratio of ~2x.

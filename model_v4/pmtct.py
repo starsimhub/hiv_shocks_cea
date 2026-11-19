@@ -69,21 +69,21 @@ class PMTCT(ss.Intervention):
         preg = sim.demographics.pregnancy
 
         # Enrolment ends with the pregnancy
-        self.enrolled[~preg.pregnant] = False
+        self.enrolled[~preg.P] = False
 
         # One draw per pregnancy, once the woman is diagnosed
         p = float(np.interp(self.t.now('year'), self.years, self.coverage))
-        eligible = preg.pregnant & hiv.infected & hiv.diagnosed & ~hiv.on_art
-        undrawn = eligible.uids[self.ti_drawn[eligible.uids] != preg.ti_pregnant[eligible.uids]]
+        eligible = preg.P & hiv.infected & hiv.diagnosed & ~hiv.on_art
+        undrawn = eligible.uids[self.ti_drawn[eligible.uids] != preg.ti_P[eligible.uids]]
         if len(undrawn):
-            self.ti_drawn[undrawn] = preg.ti_pregnant[undrawn]
+            self.ti_drawn[undrawn] = preg.ti_P[undrawn]
             if p > 0:
                 self.pars.p_enroll.set(p=p)
                 self.enrolled[self.pars.p_enroll.filter(undrawn)] = True
 
         # Protect the unborn children of enrolled mothers not on ART
-        protected = (self.enrolled & preg.pregnant & ~hiv.on_art).uids
-        if len(protected) and hasattr(sim.networks, 'maternalnet'):
-            unborn = sim.networks.maternalnet.find_contacts(protected)
+        protected = (self.enrolled & preg.P & ~hiv.on_art).uids
+        if len(protected) and hasattr(sim.networks, 'prenatalnet'):
+            unborn = sim.networks.prenatalnet.find_contacts(protected)
             hiv.rel_sus[ss.uids(unborn)] *= 1 - self.pars.efficacy
         return

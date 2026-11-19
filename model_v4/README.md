@@ -1,18 +1,25 @@
-# Eswatini HIVsim baseline — starsim 3.7.2 snapshot
+# Eswatini HIVsim baseline — Starsim v4 port (in progress)
 
-A frozen copy of the calibrated Eswatini model as it runs on **starsim 3.7.2 /
-stisim 1.7.0**. It's the reference point for porting the model to Starsim v4.
+The `model_3_7_2` snapshot being ported to **Starsim 4.0.0rc5 / stisim `v4`**
+(conda env `hivsim-v4`; stisim from the `IDM/stisim_v4` worktree, branch
+`v4` @ `9fe22a2`). `model_3_7_2/` is the frozen reference it is checked against.
 
-## Provenance
+## Port status (2026-11-19)
 
-- **Source:** [`hivsim_eswatini`](https://github.com/starsimhub/hivsim_eswatini),
-  branch `exp/027-cascade-prep-recal`, commit `068dd83` (2026-11-19).
-- **Model:** the `"027d"` configuration of `DTC_check/build_and_check_calibration.py`:
-  - Adam Akullian's 024 point fit (design row 868; 7 transmission parameters);
-  - Daniel Citron's exp 027 inputs (below).
-- **Dependencies:** starsim `main` @ `2a99fc85` (3.7.2) and stisim `main` @
-  `3730ddc` (1.7.0), from the editable checkouts in `IDM/`. Python 3.13,
-  conda env `hivsim-dev`.
+- **Runs end to end on v4.** Changes so far: Starsim's migration script
+  (`ss.MaternalNet` → `ss.PrenatalNet`, `ss.lognorm_ex` → `ss.lognormal`,
+  pregnancy state names, `sim.pop_scale`); ANC first-trimester eligibility
+  rewritten for v4's pregnancy module (time in `P` under 13 weeks); `baseline.py`'s
+  comparison maps v3 result names to v4's.
+- **Not yet calibrated on v4.** With row 868's parameters, prevalence and new
+  infections run higher than in 3.7.2 (e.g. women 2017: 47% vs 39%), as stisim's
+  v4 changelog predicts (HIV's acute stage no longer truncated; "calibrated betas
+  need refitting"). Population and HIV deaths are close.
+- **Still to port:** `analyzers.py` (v4 records stocks at the start of a step:
+  `record_states()` / `record_events()`, and results need `kind=`).
+
+The timeline and component tables below describe the model as inherited from
+3.7.2 (hivsim_eswatini commit `068dd83`; full provenance in `model_3_7_2/README.md`).
 
 ## Timeline of model updates
 
@@ -55,21 +62,48 @@ sim = make_baseline_sim(seed=1)          # 1985-2026; kwargs pass to run_sims.ma
 sim.run()
 ```
 
-`python baseline.py` runs seed 1 and compares prevalence, new infections and
-deaths with `reference/baseline_027d_10seeds.df` (seeds 1–10, annual
-`sim.to_df(resample="year", use_years=True, sep=".")`). Seed 1 reproduces it
-exactly on the versions above. That reference is what a v4 port should be
-checked against.
+`python baseline.py` runs seed 1 and prints prevalence, new infections, HIV
+deaths and people on ART beside the mean of the 3.7.2 reference
+(`reference/baseline_027d_10seeds.df`, v3 result names mapped to v4's). v4 uses
+different random streams and records stocks at the start of each step, so the
+two agree statistically at best, not run for run.
 
 ## Files
 
 - `baseline.py` — the calibrated parameters and `make_baseline_sim()`.
 - `run_sims.py`, `interventions.py`, `analyzers.py`, `pmtct.py`,
   `prep_initiations.py`, `vls_construction.py`, `vls_stock_target.py` —
-  copied unchanged from the source commit.
-- `data/` — exactly the files a run reads (traced from a full run).
+  ported to Starsim v4 (see the status note at the top).
+- `art_coverage_cohort_construction.py` — rebuilds `data/art_coverage_cohorts.csv`
+  from `data/SHIMS_909090_coverage.csv` and `data/art_coverage.csv`
+  (paths relative to this folder; verified to reproduce the shipped file exactly).
 - `params/calib2d_chosen.json` — the fitted testing inputs.
-- `reference/` — 10-seed output of this configuration.
+- `reference/` — 10-seed output of the 3.7.2 configuration.
+
+### `data/`
+
+Model inputs (read on every run):
+
+| File | What it is |
+|---|---|
+| `art_coverage_cohorts.csv` | Forced ART coverage by sex × age cohort (built by `art_coverage_cohort_construction.py`) |
+| `prep_initiations.csv` | Oral and LA-PrEP initiations per year; byte-identical to hivsim_eswatini's `DTC_check/SHIMS_Datasets/SWZ_PrEP_Distribution_Data.csv` |
+| `vmmc_coverage.csv` | Circumcision coverage by age (2016 row replaced by SHIMS2 totals in code, `interventions.SHIMS2_VMMC`) |
+| `condom_use.csv`, `init_prev_hiv.csv`, `eswatini_hiv_calib.csv` | Network condom use, initial prevalence, UNAIDS series attached to the sim |
+| `eswatini_age_1985.csv`, `eswatini_asfr.csv`, `eswatini_deaths.csv`, `eswatini_migration.csv` | Demographics |
+
+Source and reference data (not read by a baseline run), copied unchanged from
+hivsim_eswatini's `DTC_check/SHIMS_Datasets/` and `data/`:
+
+| File | What it is | Used for |
+|---|---|---|
+| `SHIMS_909090_coverage.csv` | SHIMS2 (2017) and SHIMS3 (2021) % diagnosed, on ART of diagnosed, VLS of on ART, by sex and age | Source of the ART input; calibration targets for the testing rates (2017; 2021 held out) |
+| `aware_and_art_no_interactions_modeled_output_1995_2021-From_Kasturi.csv` | Kasturi's modelled % aware and % on ART among aware, 1995–2021, by sex and 5-year age | Guide on the men:women balance of diagnosis in the testing calibration; comparison plots |
+| `SHIMS_incidence_data.csv` | SHIMS2 and SHIMS3 incidence by sex and age | Comparison plots only |
+| `art_coverage.csv` | Adam's original ART input ([15,25) … 45+), used up to exp 027c | 2011 (SHIMS1) rows of the cohort ART input; `vls_construction.derive_given_art_by_age`; `make_sim(art_coverage=None)` |
+| `SWZ_art_coverage.csv` | An older (Nov 2023) ART-coverage table | Not used by any code; kept for reference |
 
 The code reads `data/` relative to the working directory; `baseline.py`
-changes into this folder on import.
+changes into this folder on import. Paths in comments and docstrings such as
+`DTC_check/...`, `calibration_data/...` and `experiments/...` refer to the
+source repository, hivsim_eswatini, and are kept as provenance.

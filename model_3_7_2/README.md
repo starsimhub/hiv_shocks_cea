@@ -67,9 +67,36 @@ checked against.
 - `run_sims.py`, `interventions.py`, `analyzers.py`, `pmtct.py`,
   `prep_initiations.py`, `vls_construction.py`, `vls_stock_target.py` —
   copied unchanged from the source commit.
-- `data/` — exactly the files a run reads (traced from a full run).
+- `art_coverage_cohort_construction.py` — rebuilds `data/art_coverage_cohorts.csv`
+  from `data/SHIMS_909090_coverage.csv` and `data/art_coverage.csv`
+  (paths relative to this folder; verified to reproduce the shipped file exactly).
 - `params/calib2d_chosen.json` — the fitted testing inputs.
-- `reference/` — 10-seed output of this configuration.
+- `reference/` — 10-seed output of the 3.7.2 configuration.
+
+### `data/`
+
+Model inputs (read on every run):
+
+| File | What it is |
+|---|---|
+| `art_coverage_cohorts.csv` | Forced ART coverage by sex × age cohort (built by `art_coverage_cohort_construction.py`) |
+| `prep_initiations.csv` | Oral and LA-PrEP initiations per year; byte-identical to hivsim_eswatini's `DTC_check/SHIMS_Datasets/SWZ_PrEP_Distribution_Data.csv` |
+| `vmmc_coverage.csv` | Circumcision coverage by age (2016 row replaced by SHIMS2 totals in code, `interventions.SHIMS2_VMMC`) |
+| `condom_use.csv`, `init_prev_hiv.csv`, `eswatini_hiv_calib.csv` | Network condom use, initial prevalence, UNAIDS series attached to the sim |
+| `eswatini_age_1985.csv`, `eswatini_asfr.csv`, `eswatini_deaths.csv`, `eswatini_migration.csv` | Demographics |
+
+Source and reference data (not read by a baseline run), copied unchanged from
+hivsim_eswatini's `DTC_check/SHIMS_Datasets/` and `data/`:
+
+| File | What it is | Used for |
+|---|---|---|
+| `SHIMS_909090_coverage.csv` | SHIMS2 (2017) and SHIMS3 (2021) % diagnosed, on ART of diagnosed, VLS of on ART, by sex and age | Source of the ART input; calibration targets for the testing rates (2017; 2021 held out) |
+| `aware_and_art_no_interactions_modeled_output_1995_2021-From_Kasturi.csv` | Kasturi's modelled % aware and % on ART among aware, 1995–2021, by sex and 5-year age | Guide on the men:women balance of diagnosis in the testing calibration; comparison plots |
+| `SHIMS_incidence_data.csv` | SHIMS2 and SHIMS3 incidence by sex and age | Comparison plots only |
+| `art_coverage.csv` | Adam's original ART input ([15,25) … 45+), used up to exp 027c | 2011 (SHIMS1) rows of the cohort ART input; `vls_construction.derive_given_art_by_age`; `make_sim(art_coverage=None)` |
+| `SWZ_art_coverage.csv` | An older (Nov 2023) ART-coverage table | Not used by any code; kept for reference |
 
 The code reads `data/` relative to the working directory; `baseline.py`
-changes into this folder on import.
+changes into this folder on import. Paths in comments and docstrings such as
+`DTC_check/...`, `calibration_data/...` and `experiments/...` refer to the
+source repository, hivsim_eswatini, and are kept as provenance.
