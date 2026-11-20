@@ -35,27 +35,33 @@ class hiv_epi(ss.Analyzer):
         results = []
 
         # UNAIDS broad age ranges: prevalence, n_infected, new_infections
+        # Starsim 4: each result declares its kind (stock / flow / ratio).
+        # Stocks are averaged over a period when resampled, as in Starsim 3.
         for lo, hi in self.unaids_bins:
-            results.append(ss.Result(f'prevalence_{lo}_{hi}', dtype=float, scale=False))
-            results.append(ss.Result(f'n_infected_{lo}_{hi}', dtype=int, scale=True))
-            results.append(ss.Result(f'new_infections_{lo}_{hi}', dtype=int, scale=True))
+            results.append(ss.Result(f'prevalence_{lo}_{hi}', dtype=float, kind='ratio'))
+            results.append(ss.Result(f'n_infected_{lo}_{hi}', dtype=int, kind='stock', summarize_by='mean'))
+            results.append(ss.Result(f'new_infections_{lo}_{hi}', dtype=int, kind='flow'))
 
         # PHIA 5-year age/sex bins above 35: prevalence only
         for sex in ['f', 'm']:
             for lo, hi in self.phia_bins:
-                results.append(ss.Result(f'prevalence_{sex}_{lo}_{hi}', dtype=float, scale=False))
+                results.append(ss.Result(f'prevalence_{sex}_{lo}_{hi}', dtype=float, kind='ratio'))
 
         # Sex-specific incidence for PHIA ranges
         for sex in ['f', 'm']:
             for lo, hi in self.incidence_bins:
-                results.append(ss.Result(f'incidence_{sex}_{lo}_{hi}', dtype=float, scale=False))
+                results.append(ss.Result(f'incidence_{sex}_{lo}_{hi}', dtype=float, kind='ratio'))
 
         # Overall incidence for broad range
-        results.append(ss.Result('incidence_15_100', dtype=float, scale=False))
+        results.append(ss.Result('incidence_15_100', dtype=float, kind='ratio'))
 
         self.define_results(*results)
 
-    def step(self):
+    def record_events(self):
+        # Starsim 4: at the end of each step (after the deaths), as Starsim 3's
+        # step() was, so the stocks here are as at the end of the step. New
+        # infections are those with hiv.ti_infected == ti, as in Starsim 3.
+        super().record_events()
         sim = self.sim
         ti = self.ti
         hiv = sim.diseases.hiv
@@ -198,39 +204,51 @@ class PopByAgeSex(ss.Analyzer):
         res = []
         for sex in ('f', 'm'):
             for lo, hi in self.AGE_BINS:
-                res.append(ss.Result(f'n_alive_{sex}_{lo}_{hi}', dtype=int, scale=True))
-                res.append(ss.Result(f'n_infected_{sex}_{lo}_{hi}', dtype=int, scale=True))
+                # Starsim 4: stocks recorded at the start of each step and,
+                # when resampled to years, averaged over the year (as Starsim 3
+                # did for n_ results) rather than taken on 1 January.
+                res.append(ss.Result(f'n_alive_{sex}_{lo}_{hi}', dtype=int, kind='stock', summarize_by='mean'))
+                res.append(ss.Result(f'n_infected_{sex}_{lo}_{hi}', dtype=int, kind='stock', summarize_by='mean'))
                 # Added by exp 023: incidence by age band needs a numerator.
                 # hiv_epi carries incidence only as 15-49 and 18-49 aggregates
                 # by sex, but the SHIMS2 incidence targets are 5- and 10-year
                 # bands. Denominator is n_alive - n_infected (HIV has no
                 # recovered class, so that is the susceptible stock).
-                res.append(ss.Result(f'new_infections_{sex}_{lo}_{hi}',
-                                     dtype=int, scale=True))
-            res.append(ss.Result(f'prevalence_{sex}_15_49', dtype=float, scale=False))
-        res.append(ss.Result('n_alive_total', dtype=int, scale=True))
-        res.append(ss.Result('n_infected_total', dtype=int, scale=True))
-        res.append(ss.Result('new_infections_total', dtype=int, scale=True))
+                res.append(ss.Result(f'new_infections_{sex}_{lo}_{hi}', dtype=int, kind='flow'))
+            res.append(ss.Result(f'prevalence_{sex}_15_49', dtype=float, kind='ratio'))
+        res.append(ss.Result('n_alive_total', dtype=int, kind='stock', summarize_by='mean'))
+        res.append(ss.Result('n_infected_total', dtype=int, kind='stock', summarize_by='mean'))
+        res.append(ss.Result('new_infections_total', dtype=int, kind='flow'))
         self.define_results(*res)
 
-    def step(self):
+    def record_states(self):
+        """ Starsim 4: the stocks, at the start of each step """
+        super().record_states()
         sim, ti = self.sim, self.ti
         ppl, hiv = sim.people, sim.diseases.hiv
         alive = ppl.alive
-
         for sex, sex_bool in (('f', ppl.female), ('m', ppl.male)):
             for lo, hi in self.AGE_BINS:
                 in_bin = alive & sex_bool & (ppl.age >= lo) & (ppl.age < hi)
                 self.results[f'n_alive_{sex}_{lo}_{hi}'][ti] = in_bin.count()
                 self.results[f'n_infected_{sex}_{lo}_{hi}'][ti] = (in_bin & hiv.infected).count()
-                self.results[f'new_infections_{sex}_{lo}_{hi}'][ti] = (
-                    in_bin & (hiv.ti_infected == ti)).count()
             adults = alive & sex_bool & (ppl.age >= 15) & (ppl.age < 50)
             if adults.count() > 0:
                 self.results[f'prevalence_{sex}_15_49'][ti] = float(np.mean(hiv.infected[adults]))
-
         self.results['n_alive_total'][ti] = alive.count()
         self.results['n_infected_total'][ti] = (alive & hiv.infected).count()
+
+    def record_events(self):
+        """ Starsim 4: the infections in each step, at its end (hiv.ti_infected == ti) """
+        super().record_events()
+        sim, ti = self.sim, self.ti
+        ppl, hiv = sim.people, sim.diseases.hiv
+        alive = ppl.alive
+        for sex, sex_bool in (('f', ppl.female), ('m', ppl.male)):
+            for lo, hi in self.AGE_BINS:
+                in_bin = alive & sex_bool & (ppl.age >= lo) & (ppl.age < hi)
+                self.results[f'new_infections_{sex}_{lo}_{hi}'][ti] = (
+                    in_bin & (hiv.ti_infected == ti)).count()
         self.results['new_infections_total'][ti] = (alive & (hiv.ti_infected == ti)).count()
 
 
@@ -300,3 +318,37 @@ class Cascade(ss.Analyzer):
                 r[f'p_vls_{sex}_{rng}'][ti] = eff / inf if inf else np.nan
                 r[f'p_vls_given_art_{sex}_{rng}'][ti] = eff / art if art else np.nan
         return
+
+
+class CascadeByAgeSex(ss.Analyzer):
+    """90-90-90 counts by 5-year age band and sex: PLHIV, diagnosed, on ART, suppressed.
+
+    From hivsim_eswatini's DTC_check/build_and_check_calibration.py (where it was
+    defined locally), ported to Starsim 4: the counts are stocks recorded at the
+    start of each step, averaged over the year when resampled. Same AGE_BINS as
+    PopByAgeSex, so the two line up.
+    """
+    AGE_BINS = [(a, a + 5) for a in range(0, 100, 5)]
+    STEMS = ("n_infected", "n_diagnosed", "n_on_art", "n_effective_art")
+
+    def __init__(self, *args, name="cascadeagesex", **kwargs):
+        super().__init__(*args, **kwargs)
+        self.name = name
+
+    def init_results(self):
+        super().init_results()
+        self.define_results(*[
+            ss.Result(f"{stem}_{sex}_{lo}_{hi}", dtype=int, kind="stock", summarize_by="mean")
+            for sex in ("f", "m") for lo, hi in self.AGE_BINS for stem in self.STEMS])
+
+    def record_states(self):
+        super().record_states()
+        ppl, hiv = self.sim.people, self.sim.diseases.hiv
+        r, ti = self.results, self.ti
+        for sex, sex_bool in (("f", ppl.female), ("m", ppl.male)):
+            for lo, hi in self.AGE_BINS:
+                in_bin = ppl.alive & sex_bool & (ppl.age >= lo) & (ppl.age < hi)
+                r[f"n_infected_{sex}_{lo}_{hi}"][ti] = (in_bin & hiv.infected).count()
+                r[f"n_diagnosed_{sex}_{lo}_{hi}"][ti] = (in_bin & hiv.diagnosed).count()
+                r[f"n_on_art_{sex}_{lo}_{hi}"][ti] = (in_bin & hiv.on_art).count()
+                r[f"n_effective_art_{sex}_{lo}_{hi}"][ti] = (in_bin & hiv.on_effective_art).count()

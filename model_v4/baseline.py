@@ -1,11 +1,11 @@
-"""The calibrated Eswatini HIVsim baseline (starsim 3.7.2 / stisim 1.7.0).
+"""The calibrated Eswatini HIVsim baseline on Starsim 4 (stisim v4).
 
-Copied from hivsim_eswatini, branch exp/027-cascade-prep-recal, commit
-068dd83: the "027d" configuration of DTC_check/build_and_check_calibration.py.
-That is Adam Akullian's 024 point fit (design row 868, 7 transmission
-parameters) plus Daniel Citron's exp 027 inputs: age-structured testing and
-forced ART, logistic ANC testing, PMTCT, logistic viral suppression, SHIMS2
-VMMC totals, and PrEP from programme initiation counts. See README.md.
+Ported from model_3_7_2 (hivsim_eswatini 068dd83, the "027d" configuration):
+Daniel Citron's exp 027 inputs (age-structured testing and forced ART,
+logistic ANC testing, PMTCT, logistic viral suppression, SHIMS2 VMMC totals,
+PrEP from programme initiation counts) with the 7 transmission parameters
+REFITTED on Starsim 4 (calibrate_transmission.py -> params/v4_transmission.json).
+Adam Akullian's row 868, fitted on 3.7.2, is kept as ROW868. See README.md.
 
     from baseline import make_baseline_sim
     sim = make_baseline_sim(seed=1)
@@ -25,11 +25,17 @@ os.chdir(HERE)  # run_sims.py and interventions.py read data/ relative to cwd
 
 from run_sims import make_sim  # noqa: E402
 
-# 024 design row 868 (hivsim_eswatini experiments/026_scenarios/run.py::BEST)
-BEST = dict(beta_m2f=0.014161835611057863, rel_beta_f2m=0.3097261030208422,
+# 024 design row 868 (hivsim_eswatini experiments/026_scenarios/run.py::BEST),
+# fitted on Starsim 3.7.2: the starting point of the v4 refit.
+ROW868 = dict(beta_m2f=0.014161835611057863, rel_beta_f2m=0.3097261030208422,
             s_f_young=2.224000314771824, age_gap_shift=0.0699801603950227,
             age_gap_sd_mult=1.5001144712607821, prop_f0=0.608751696061895,
             prop_m0=0.4742150061435999)
+
+# The same 7 parameters refitted on Starsim 4 (calibrate_transmission.py).
+V4_FIT = {k: v for k, v in sc.loadjson(HERE / "params" / "v4_transmission.json").items()
+          if k in ROW868}
+BEST = V4_FIT  # the baseline's default
 
 # Fixed (non-calibrated) network structure, as 024/026
 AGE_DIFF_BASE = {"teens": [(7, 3), (6, 3), (5, 1)],
@@ -67,10 +73,11 @@ def cascade_kw(path=HERE / "params" / "calib2d_chosen.json"):
         art_coverage="cohorts", vmmc_shims2=True)
 
 
-def make_baseline_sim(seed=1, start=1985, stop=2026, verbose=0, **kwargs):
-    """The calibrated baseline. kwargs pass through to run_sims.make_sim
-    (e.g. analyzers=, extra_interventions=) and override the defaults here."""
-    hiv_pars, network_pars = build_pars()
+def make_baseline_sim(seed=1, start=1985, stop=2026, verbose=0, pars=None, **kwargs):
+    """The calibrated baseline. `pars` are the 7 transmission parameters (default
+    BEST, the v4 refit; pass ROW868 for Adam's 3.7.2 fit). kwargs pass through to run_sims.make_sim (e.g. analyzers=,
+    extra_interventions=) and override the defaults here."""
+    hiv_pars, network_pars = build_pars(BEST if pars is None else pars)
     kw = dict(seed=seed, start=start, stop=stop, verbose=verbose,
               hiv_pars=hiv_pars, network_pars=network_pars, **cascade_kw())
     kw.update(kwargs)

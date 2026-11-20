@@ -11,12 +11,31 @@ The `model_3_7_2` snapshot being ported to **Starsim 4.0.0rc5 / stisim `v4`**
   pregnancy state names, `sim.pop_scale`); ANC first-trimester eligibility
   rewritten for v4's pregnancy module (time in `P` under 13 weeks); `baseline.py`'s
   comparison maps v3 result names to v4's.
-- **Not yet calibrated on v4.** With row 868's parameters, prevalence and new
-  infections run higher than in 3.7.2 (e.g. women 2017: 47% vs 39%), as stisim's
-  v4 changelog predicts (HIV's acute stage no longer truncated; "calibrated betas
-  need refitting"). Population and HIV deaths are close.
-- **Still to port:** `analyzers.py` (v4 records stocks at the start of a step:
-  `record_states()` / `record_events()`, and results need `kind=`).
+- **Transmission recalibrated on v4** (`calibrate_transmission.py` →
+  `params/v4_transmission.json`; now the default, `baseline.BEST`; Adam's row
+  868 is `baseline.ROW868`). Row 868's parameters, fitted on 3.7.2, gave too large
+  an epidemic on v4 (women 15–49 in 2016: 47% vs PHIA 36%), as stisim's v4
+  changelog predicts. The same 7 parameters were refitted with optuna TPE (405
+  trials × 2 seeds, best 10 re-run on 8 fresh seeds) against PHIA prevalence by
+  age and sex, 15–49 by sex, women 20–39 and the SHIMS incidence aggregates,
+  with the 027d cascade inputs fixed and 2021 held out. Result (10 seeds):
+  prevalence-by-age MAE 0.035, bias −0.009, 32/54 within PHIA's CI (3.7.2
+  fit: 0.038, +0.008, ~28/54); with 2021, 44/74. Largest parameter changes:
+  young women's extra susceptibility `s_f_young` 2.22 → 1.03; narrower partner
+  age gaps (`age_gap_sd_mult` 1.50 → 0.70, `age_gap_shift` +0.07 → −0.65);
+  more men in the lowest risk group (`prop_m0` 0.47 → 0.61); `rel_beta_f2m`
+  0.31 → 0.42. The testing rates (027d) were not refitted.
+- **Analyzers ported** (`analyzers.py`): `PopByAgeSex` and `CascadeByAgeSex`
+  (moved here from hivsim_eswatini's check script) record counts at the start of
+  each step and new infections at its end, with counts averaged over each year
+  when resampled, as in 3.7.2; `hiv_epi` keeps its end-of-step timing. All
+  results declare `kind=`.
+- **Calibration check:** `check_calibration.py` runs 10 seeds and draws the
+  hivsim_eswatini check figures (same plotting code) into
+  `../results/model_v4_check/`, against `calibration_data/` (prevalence,
+  incidence and ART-coverage targets, 2021 hold-out, copied from
+  hivsim_eswatini) and the SHIMS / Kasturi data in `data/`. With row 868 on
+  v4: MAE 0.068, bias +0.052; with the v4 refit: 0.035, −0.009.
 
 The timeline and component tables below describe the model as inherited from
 3.7.2 (hivsim_eswatini commit `068dd83`; full provenance in `model_3_7_2/README.md`).
