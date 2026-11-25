@@ -28,7 +28,8 @@ Data: calibration_data/ (prevalence, incidence and ART-coverage targets, 2021
 hold-out) and data/ (SHIMS 90-90-90, SHIMS incidence, Kasturi, eswatini_ppdv,
 SHIMS2 incidence by age, PrEP initiations), copied from hivsim_eswatini.
 Outputs: figures and the comparison table in ../results/model_v4_check/; the
-run itself in ../raw_results/model_v4_check/ (gitignored).
+run itself in ../raw_results/model_v4_check/ (gitignored). With --fsw, the
+sex-work fit instead, in ../results/model_v4_fsw_check/.
 """
 
 # %% Imports
@@ -45,15 +46,27 @@ import matplotlib.pyplot as plt
 REPO = Path(__file__).resolve().parent  # model_v4/ (laid out like hivsim_eswatini)
 sys.path.insert(0, str(REPO))
 
-from baseline import make_baseline_sim, cascade_kw        # noqa: E402  (chdirs to REPO)
+from baseline import make_baseline_sim, cascade_kw, ROW868, SW_BASE  # noqa: E402  (chdirs to REPO)
 from analyzers import PopByAgeSex, CascadeByAgeSex        # noqa: E402
 import standard_figures as sf                             # noqa: E402
 
-OUT = REPO.parent / "results" / "model_v4_check"
-RAW = REPO.parent / "raw_results" / "model_v4_check"
+# Which fit to check: "v4" is baseline.BEST; "v4_fsw" is the 10-parameter fit
+# with the sex-work parameters free (calibrate_transmission.py --fsw). Run with
+# --fsw, or set it here in the Interactive window.
+FIT = "v4_fsw" if "--fsw" in sys.argv else "v4"
+if FIT == "v4_fsw":
+    PARS = {k: v for k, v in sc.loadjson(REPO / "params" / "v4_transmission_fsw.json").items()
+            if k in ROW868 or k in SW_BASE}
+    CHECK = "model_v4_fsw_check"
+    LABEL = "model_v4: v4 refit with sex-work parameters free + 027d inputs on Starsim 4"
+else:
+    PARS = None  # baseline.BEST
+    CHECK = "model_v4_check"
+    LABEL = "model_v4: v4-refitted transmission + 027d inputs on Starsim 4"
+OUT = REPO.parent / "results" / CHECK
+RAW = REPO.parent / "raw_results" / CHECK
 OUT.mkdir(parents=True, exist_ok=True)
 RAW.mkdir(parents=True, exist_ok=True)
-LABEL = "model_v4: v4-refitted transmission + 027d inputs on Starsim 4"
 MODEL_KW = cascade_kw()  # the 027d settings make_baseline_sim uses (read by the plots, e.g. shims2_year)
 
 N_SEEDS = 10
@@ -62,7 +75,7 @@ START, STOP = 1985, 2026
 
 # %% Build + run the model on Starsim 4, one seed per process
 def run_one_seed(seed):
-    sim = make_baseline_sim(seed=seed, start=START, stop=STOP,
+    sim = make_baseline_sim(seed=seed, start=START, stop=STOP, pars=PARS,
                             analyzers=[PopByAgeSex(), CascadeByAgeSex()])
     sim.run()
     d = sim.to_df(resample="year", use_years=True, sep=".")

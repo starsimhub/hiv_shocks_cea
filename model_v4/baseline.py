@@ -19,6 +19,7 @@ import os
 from pathlib import Path
 
 import sciris as sc
+import starsim as ss
 
 HERE = Path(__file__).resolve().parent
 os.chdir(HERE)  # run_sims.py and interventions.py read data/ relative to cwd
@@ -43,20 +44,29 @@ AGE_DIFF_BASE = {"teens": [(7, 3), (6, 3), (5, 1)],
                  "adult": [(8, 3), (7, 3), (5, 2)]}
 CONC_BASE = {"f1_conc": 0.15, "f2_conc": 0.25, "m1_conc": 0.15, "m2_conc": 0.5}
 REL_INIT_PREV = 0.2
+# Sex work: run_sims.py's values (sw_seeking_rate is stisim's default, a monthly
+# probability), used unless the parameter set includes them
+# (calibrate_transmission.py --fsw).
+SW_BASE = dict(fsw_shares=0.10, client_shares=0.20, sw_seeking_rate=1.0)
 
 
 def build_pars(p=BEST):
-    """Map the 7 calibrated parameters onto make_sim's hiv_pars / network_pars."""
+    """Map the calibrated parameters onto make_sim's hiv_pars / network_pars:
+    the 7 transmission parameters, plus the sex-work ones where p has them."""
     hiv_pars = dict(
         beta_m2f=p["beta_m2f"], rel_beta_f2m=p["rel_beta_f2m"],
         rel_init_prev=REL_INIT_PREV,
         rel_sus_age=[(15, 25, "f", p["s_f_young"]),
                      (25, 50, "f", 1.0), (15, 50, "m", 1.0)])
     shift, sd_mult = p["age_gap_shift"], p["age_gap_sd_mult"]
+    sw = {k: p.get(k, v) for k, v in SW_BASE.items()}
     network_pars = dict(
         prop_f0=p["prop_f0"], prop_m0=p["prop_m0"],
         age_diff_pars={g: [(max(m + shift, 1.0), max(s * sd_mult, 0.2))
                            for m, s in v] for g, v in AGE_DIFF_BASE.items()},
+        fsw_shares=ss.bernoulli(p=sw["fsw_shares"]),
+        client_shares=ss.bernoulli(p=sw["client_shares"]),
+        sw_seeking_rate=ss.probpermonth(sw["sw_seeking_rate"]),
         **CONC_BASE)
     return hiv_pars, network_pars
 

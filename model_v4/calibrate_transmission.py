@@ -35,6 +35,15 @@ those chosen. Runs stop at 2017 (the last target is 2016).
 Run with the hivsim-v4 env:  python model_v4/calibrate_transmission.py
 Outputs: ../raw_results/calib_v4/ (all trials, final re-runs) and
 params/v4_transmission.json (the chosen parameters).
+
+--fsw also frees the sex-work parameters (fsw_shares, client_shares,
+sw_seeking_rate; fixed otherwise at baseline.SW_BASE), starting from and
+compared against the 7-parameter v4 fit, with the same objective. With the
+same client demand, fewer sex workers carry the same number of sex-work
+partnerships, which can lower women's prevalence without lowering men's.
+There is no sex-worker target: their prevalence (hiv.prevalence_sw) and the
+share of women 15-49 currently sex workers are reported, not fitted. Outputs:
+../raw_results/calib_v4_fsw/ and params/v4_transmission_fsw.json.
 """
 
 import os
@@ -49,23 +58,32 @@ import sciris as sc
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from baseline import make_baseline_sim, ROW868     # noqa: E402  (chdirs to HERE)
+from baseline import make_baseline_sim, ROW868, V4_FIT, SW_BASE  # noqa: E402  (chdirs to HERE)
 from analyzers import PopByAgeSex                   # noqa: E402
 import standard_figures as sf                       # noqa: E402
 
-RAW = HERE.parent / "raw_results" / "calib_v4"
-RAW.mkdir(parents=True, exist_ok=True)
+FIT_SW = "--fsw" in sys.argv
 
 BOUNDS = dict(beta_m2f=(0.004, 0.025), rel_beta_f2m=(0.15, 0.60), s_f_young=(0.8, 3.0),
               age_gap_shift=(-2.0, 3.0), age_gap_sd_mult=(0.6, 1.8),
               prop_f0=(0.45, 0.85), prop_m0=(0.40, 0.80))
 LOG = {"beta_m2f", "rel_beta_f2m", "s_f_young", "age_gap_sd_mult"}  # sampled on a log scale, as 024
-NAMES = list(BOUNDS)
 DISC_STRATUM, DISC_AGG = 0.02, 0.01
 N_TRIALS, BATCH, SEEDS_SEARCH = 405, 9, 2
 TOP_FINAL, SEEDS_FINAL = 10, 8
 NCPUS = 9
 STOP = 2017
+# The search's first trial, and the reference re-run alongside the finalists
+START, START_LABEL, OUT_NAME = dict(ROW868), "row 868", "v4_transmission"
+if FIT_SW:
+    BOUNDS.update(fsw_shares=(0.02, 0.15), client_shares=(0.08, 0.40), sw_seeking_rate=(0.2, 1.0))
+    LOG |= {"fsw_shares", "client_shares", "sw_seeking_rate"}
+    N_TRIALS = 603  # more parameters (10), so a longer search
+    START, START_LABEL, OUT_NAME = {**V4_FIT, **SW_BASE}, "v4 fit", "v4_transmission_fsw"
+NAMES = list(BOUNDS)
+
+RAW = HERE.parent / "raw_results" / OUT_NAME.replace("v4_transmission", "calib_v4")
+RAW.mkdir(parents=True, exist_ok=True)
 
 # --- Targets -------------------------------------------------------------------
 TG = sf.load_targets()                                    # year, sex, age_low, Count, phia, lb, ub
@@ -121,6 +139,8 @@ def model_tables(df):
             alv += k * g[f"popagesex.n_alive_{t.sex}_{a}_{a + 5}"].iloc[0]
             inf += k * g[f"popagesex.n_infected_{t.sex}_{a}_{a + 5}"].iloc[0]
         rows[("inc", t.year, t.sex, lo)] = 100.0 * new / (alv - inf)
+    for year in (2011, 2016):                              # reported, not fitted
+        rows[("prev_sw", year)] = df.loc[df.timevec == year, "hiv.prevalence_sw"].iloc[0]
     return rows
 
 
@@ -128,6 +148,9 @@ def run_point(pid, x, seed):
     sim = make_baseline_sim(seed=seed, stop=STOP, pars=x, analyzers=[PopByAgeSex()])
     sim.run()
     out = model_tables(sim.to_df(resample="year", use_years=True, sep="."))
+    ppl = sim.people
+    f15_49 = ppl.female & (ppl.age >= 15) & (ppl.age < 50)
+    out[("share_sw",)] = (f15_49 & sim.networks.structuredsexual.fsw).count() / f15_49.count()  # at STOP
     return pid, seed, out
 
 
@@ -156,6 +179,8 @@ def score(results):
             r[f"prevw20_39_{t.year}"] = m[("w2039", t.year, "f", 20)]
         for _, t in INC.iterrows():
             r[f"inc_{t.sex}_{t.year}"] = m[("inc", t.year, t.sex, int(t.age_low))]
+        r["prev_sw_2011"], r["prev_sw_2016"] = m[("prev_sw", 2011)], m[("prev_sw", 2016)]
+        r["share_sw_f15_49"] = m[("share_sw",)]
         rows.append(r)
     return pd.DataFrame(rows)
 
@@ -170,7 +195,7 @@ if __name__ == "__main__":
     t0 = time.time()
     study = optuna.create_study(direction="minimize", sampler=optuna.samplers.TPESampler(
         seed=20261119, multivariate=True, constant_liar=True, n_startup_trials=45))
-    study.enqueue_trial(dict(ROW868))
+    study.enqueue_trial(dict(START))
     records = []
     while len(study.trials) < N_TRIALS:
         trials = [study.ask() for _ in range(BATCH)]
@@ -189,31 +214,34 @@ if __name__ == "__main__":
 
     top = search.nsmallest(TOP_FINAL, "loss")
     pts = [(20_000 + i, {k: float(r[k]) for k in NAMES}) for i, (_, r) in enumerate(top.iterrows())]
-    pts.append((29_999, dict(ROW868)))                       # row 868 on the same fresh seeds, for reference
+    pts.append((29_999, {k: START[k] for k in NAMES}))      # the starting point on the same fresh seeds, for reference
     fin = evaluate(pts, range(101, 101 + SEEDS_FINAL))
     fin = pd.DataFrame([{**x, "pid": pid} for pid, x in pts]).merge(fin, on="pid")
     fin.to_csv(RAW / "final.csv", index=False)
     chosen = fin[fin.pid != 29_999].nsmallest(1, "loss").iloc[0]
-    sc.savejson(HERE / "params" / "v4_transmission.json",
+    sc.savejson(HERE / "params" / f"{OUT_NAME}.json",
                 {**{k: float(chosen[k]) for k in NAMES},
                  "loss": float(chosen.loss), "mae_prev": float(chosen.mae_prev),
                  "bias_prev": float(chosen.bias_prev), "n_within_ci": int(chosen.n_within_ci),
                  "fitted_on": "starsim 4.0.0rc5, stisim v4 @ 9fe22a2; 027d cascade inputs fixed",
                  "seeds_final": SEEDS_FINAL})
 
-    cols = NAMES + ["loss", "loss_prev", "loss_agg", "loss_w2039", "loss_inc", "mae_prev", "bias_prev", "n_within_ci"]
-    with pd.option_context("display.width", 260, "display.float_format", "{:.4g}".format):
-        print("\nFinal (8 fresh seeds); pid 29999 = row 868:")
+    cols = NAMES + ["loss", "loss_prev", "loss_agg", "loss_w2039", "loss_inc", "mae_prev", "bias_prev", "n_within_ci",
+                    "prev_sw_2016", "share_sw_f15_49"]
+    with pd.option_context("display.width", 300, "display.float_format", "{:.4g}".format):
+        print(f"\nFinal (8 fresh seeds); pid 29999 = {START_LABEL}:")
         print(fin.sort_values("loss")[["pid"] + cols].to_string(index=False))
         ref = fin[fin.pid == 29_999].iloc[0]
-        print("\n15-49 prevalence and women 20-39, chosen vs row 868 vs PHIA:")
+        print(f"\n15-49 prevalence and women 20-39, chosen vs {START_LABEL} vs PHIA:")
         for _, t in AGG_15_49.iterrows():
             k = f"prev15_49_{t.sex}_{t.year}"
-            print(f"  {t.sex} 15-49 {t.year}: {chosen[k]:.3f}  (row 868 {ref[k]:.3f}; PHIA {t.phia:.3f})")
+            print(f"  {t.sex} 15-49 {t.year}: {chosen[k]:.3f}  ({START_LABEL} {ref[k]:.3f}; PHIA {t.phia:.3f})")
         for _, t in WOMEN_20_39.iterrows():
             k = f"prevw20_39_{t.year}"
-            print(f"  f 20-39 {t.year}: {chosen[k]:.3f}  (row 868 {ref[k]:.3f}; PHIA {t.phia:.3f})")
+            print(f"  f 20-39 {t.year}: {chosen[k]:.3f}  ({START_LABEL} {ref[k]:.3f}; PHIA {t.phia:.3f})")
         for _, t in INC.iterrows():
             k = f"inc_{t.sex}_{t.year}"
-            print(f"  incidence {t.sex} {t.year}: {chosen[k]:.2f}  (row 868 {ref[k]:.2f}; SHIMS {t.incidence_pct:.2f})")
+            print(f"  incidence {t.sex} {t.year}: {chosen[k]:.2f}  ({START_LABEL} {ref[k]:.2f}; SHIMS {t.incidence_pct:.2f})")
+        for k in ("prev_sw_2011", "prev_sw_2016", "share_sw_f15_49"):
+            print(f"  {k}: {chosen[k]:.3f}  ({START_LABEL} {ref[k]:.3f}; not fitted)")
     print(f"done in {time.time() - t0:.0f}s")

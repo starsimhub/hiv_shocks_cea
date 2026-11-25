@@ -1,0 +1,18 @@
+{
+  "beta_m2f": 0.009365215432934742,
+  "rel_beta_f2m": 0.2406474514397474,
+  "s_f_young": 2.9383022894860646,
+  "age_gap_shift": -1.740166199779083,
+  "age_gap_sd_mult": 1.4254408065750466,
+  "prop_f0": 0.6178285438148922,
+  "prop_m0": 0.46767953688010044,
+  "fsw_shares": 0.0675110872966632,
+  "client_shares": 0.3479171689113344,
+  "sw_seeking_rate": 0.938793250988607,
+  "loss": 160.70199611123678,
+  "mae_prev": 0.034259891877581466,
+  "bias_prev": -0.021928961031896312,
+  "n_within_ci": 33,
+  "fitted_on": "starsim 4.0.0rc5, stisim v4 @ 9fe22a2; 027d cascade inputs fixed",
+  "seeds_final": 8
+}
