@@ -1,0 +1,5 @@
+year,sex,age_low,age_high,incidence_pct,lb,ub,ci_width,uninformative,sigma,model_age_basis,source
+2011,f,18,50,3.14,2.63,3.74,1.1100000000000003,False,0.2831632653061225,18_50_prorate_first_band_0.4,"SHIMS1 2011 (longitudinal cohort), 18-49"
+2011,m,18,50,1.65,1.28,2.11,0.8299999999999998,False,0.21173469387755098,18_50_prorate_first_band_0.4,"SHIMS1 2011 (longitudinal cohort), 18-49"
+2016,f,15,50,1.73,0.96,2.5,1.54,False,0.39285714285714285,15_50,"SHIMS2 Table 5.3.B, 15-49"
+2016,m,15,50,0.85,0.21,1.49,1.28,False,0.326530612244898,15_50,"SHIMS2 Table 5.3.B, 15-49"

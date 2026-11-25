@@ -1,0 +1,610 @@
+dataset,stage,year,sex,age_group,data,data_lb,data_ub,data_n,model,model_sd,model_minus_data
+SHIMS,p_dx,2021,m,15-24,0.9110,0.8078,0.9614,56.0000,0.8480,0.0347,-0.0630
+SHIMS,p_dx,2021,f,15-24,0.8360,0.7775,0.8815,194.0000,0.8630,0.0152,0.0270
+SHIMS,p_dx,2021,m,25-34,0.7480,0.6638,0.8169,121.0000,0.7002,0.0369,-0.0478
+SHIMS,p_dx,2021,f,25-34,0.9310,0.9073,0.9490,575.0000,0.9633,0.0055,0.0323
+SHIMS,p_dx,2021,m,35-49,0.9340,0.9056,0.9543,406.0000,0.8933,0.0105,-0.0407
+SHIMS,p_dx,2021,f,35-49,0.9830,0.9715,0.9899,807.0000,0.9965,0.0012,0.0135
+SHIMS,p_dx,2021,m,50+,0.9700,0.9435,0.9843,292.0000,0.9998,0.0002,0.0298
+SHIMS,p_dx,2021,f,50+,0.9680,0.9470,0.9809,436.0000,0.9963,0.0032,0.0283
+SHIMS,p_dx,2021,m,15-49,0.8910,0.8631,0.9138,583.0000,0.8448,0.0107,-0.0462
+SHIMS,p_dx,2021,f,15-49,0.9450,0.9326,0.9552,1576.0000,0.9684,0.0031,0.0234
+SHIMS,p_dx,2021,m,15+,0.9160,0.8958,0.9326,875.0000,0.8791,0.0077,-0.0369
+SHIMS,p_dx,2021,f,15+,0.9490,0.9385,0.9578,2012.0000,0.9715,0.0028,0.0225
+SHIMS,p_art_dx,2021,m,15-24,0.9640,0.8711,0.9907,50.0000,1.0000,0.0000,0.0360
+SHIMS,p_art_dx,2021,f,15-24,0.9640,0.9231,0.9835,163.0000,0.9092,0.0172,-0.0548
+SHIMS,p_art_dx,2021,m,25-34,0.8680,0.7849,0.9222,94.0000,0.9162,0.0447,0.0482
+SHIMS,p_art_dx,2021,f,25-34,0.9670,0.9483,0.9791,538.0000,0.9302,0.0049,-0.0368
+SHIMS,p_art_dx,2021,m,35-49,0.9660,0.9426,0.9801,379.0000,0.9978,0.0033,0.0318
+SHIMS,p_art_dx,2021,f,35-49,0.9860,0.9752,0.9921,793.0000,0.9716,0.0011,-0.0144
+SHIMS,p_art_dx,2021,m,50+,0.9830,0.9602,0.9928,283.0000,0.9522,0.0005,-0.0308
+SHIMS,p_art_dx,2021,f,50+,0.9980,0.9874,0.9997,424.0000,0.9675,0.0032,-0.0305
+SHIMS,p_art_dx,2021,m,15-49,0.9480,0.9255,0.9640,523.0000,0.9822,0.0097,0.0342
+SHIMS,p_art_dx,2021,f,15-49,0.9770,0.9681,0.9835,1494.0000,0.9509,0.0025,-0.0261
+SHIMS,p_art_dx,2021,m,15+,0.9590,0.9430,0.9707,806.0000,0.9746,0.0071,0.0156
+SHIMS,p_art_dx,2021,f,15+,0.9810,0.9739,0.9862,1918.0000,0.9528,0.0025,-0.0282
+SHIMS,p_vls_art,2021,m,15-24,0.8650,0.7411,0.9348,48.0000,0.9615,0.0190,0.0965
+SHIMS,p_vls_art,2021,f,15-24,0.8940,0.8363,0.9330,158.0000,0.9541,0.0163,0.0601
+SHIMS,p_vls_art,2021,m,25-34,0.9610,0.8951,0.9861,83.0000,0.9728,0.0075,0.0118
+SHIMS,p_vls_art,2021,f,25-34,0.9460,0.9232,0.9623,524.0000,0.9632,0.0089,0.0172
+SHIMS,p_vls_art,2021,m,35-49,0.9690,0.9458,0.9825,366.0000,0.9675,0.0036,-0.0015
+SHIMS,p_vls_art,2021,f,35-49,0.9640,0.9485,0.9750,780.0000,0.9610,0.0032,-0.0030
+SHIMS,p_vls_art,2021,m,50+,0.9820,0.9586,0.9923,278.0000,0.9722,0.0071,-0.0098
+SHIMS,p_vls_art,2021,f,50+,0.9890,0.9738,0.9954,423.0000,0.9619,0.0130,-0.0271
+SHIMS,p_vls_art,2021,m,15-49,0.9580,0.9366,0.9724,497.0000,0.9678,0.0021,0.0098
+SHIMS,p_vls_art,2021,f,15-49,0.9510,0.9387,0.9609,1462.0000,0.9609,0.0015,0.0099
+SHIMS,p_vls_art,2021,m,15+,0.9670,0.9519,0.9775,775.0000,0.9689,0.0007,0.0019
+SHIMS,p_vls_art,2021,f,15+,0.9590,0.9491,0.9671,1885.0000,0.9610,0.0006,0.0020
+SHIMS,p_dx,2017,m,15-24,0.6030,0.4842,0.7108,68.0000,0.6754,0.0474,0.0724
+SHIMS,p_dx,2017,f,15-24,0.7550,0.7001,0.8027,268.0000,0.7595,0.0359,0.0045
+SHIMS,p_dx,2017,m,25-34,0.6920,0.6281,0.7493,220.0000,0.6176,0.0286,-0.0744
+SHIMS,p_dx,2017,f,25-34,0.9110,0.8878,0.9298,710.0000,0.9049,0.0060,-0.0061
+SHIMS,p_dx,2017,m,35-49,0.8480,0.8114,0.8786,439.0000,0.8420,0.0100,-0.0060
+SHIMS,p_dx,2017,f,35-49,0.9460,0.9269,0.9603,712.0000,0.9802,0.0056,0.0342
+SHIMS,p_dx,2017,m,15-29,0.5830,0.5027,0.6591,149.0000,0.5448,0.0453,-0.0382
+SHIMS,p_dx,2017,f,15-29,0.8250,0.7922,0.8536,587.0000,0.8197,0.0164,-0.0053
+SHIMS,p_dx,2017,m,20-39,0.7230,0.6790,0.7631,433.0000,0.6807,0.0153,-0.0423
+SHIMS,p_dx,2017,f,20-39,0.8950,0.8766,0.9109,1225.0000,0.9066,0.0058,0.0116
+SHIMS,p_dx,2017,m,25+,0.8160,0.7894,0.8399,902.0000,0.8119,0.0101,-0.0041
+SHIMS,p_dx,2017,f,25+,0.9310,0.9182,0.9419,1759.0000,0.9446,0.0051,0.0136
+SHIMS,p_dx,2017,m,15-49,0.7730,0.7412,0.8020,727.0000,0.7653,0.0133,-0.0077
+SHIMS,p_dx,2017,f,15-49,0.9020,0.8869,0.9153,1690.0000,0.9193,0.0051,0.0173
+SHIMS,p_dx,2017,m,15+,0.8010,0.7747,0.8249,970.0000,0.8046,0.0109,0.0036
+SHIMS,p_dx,2017,f,15+,0.9070,0.8936,0.9189,2027.0000,0.9216,0.0056,0.0146
+SHIMS,p_art_dx,2017,m,15-24,0.9220,0.8049,0.9713,44.0000,0.9199,0.0402,-0.0021
+SHIMS,p_art_dx,2017,f,15-24,0.8370,0.7802,0.8814,204.0000,0.8376,0.0293,0.0006
+SHIMS,p_art_dx,2017,m,25-34,0.8430,0.7778,0.8918,156.0000,0.9420,0.0406,0.0990
+SHIMS,p_art_dx,2017,f,25-34,0.8550,0.8259,0.8800,651.0000,0.8687,0.0059,0.0137
+SHIMS,p_art_dx,2017,m,35-49,0.8990,0.8646,0.9254,381.0000,0.9187,0.0107,0.0197
+SHIMS,p_art_dx,2017,f,35-49,0.9040,0.8795,0.9240,677.0000,0.8823,0.0055,-0.0217
+SHIMS,p_art_dx,2017,m,15-29,0.8670,0.7822,0.9221,91.0000,0.9367,0.0299,0.0697
+SHIMS,p_art_dx,2017,f,15-29,0.8490,0.8145,0.8780,488.0000,0.8631,0.0164,0.0141
+SHIMS,p_art_dx,2017,m,20-39,0.8580,0.8158,0.8918,324.0000,0.9262,0.0203,0.0682
+SHIMS,p_art_dx,2017,f,20-39,0.8630,0.8415,0.8820,1104.0000,0.8624,0.0076,-0.0006
+SHIMS,p_art_dx,2017,m,25+,0.9010,0.8776,0.9203,756.0000,0.9081,0.0092,0.0071
+SHIMS,p_art_dx,2017,f,25+,0.8870,0.8708,0.9014,1647.0000,0.8788,0.0051,-0.0082
+SHIMS,p_art_dx,2017,m,15-49,0.8840,0.8554,0.9076,581.0000,0.9242,0.0124,0.0402
+SHIMS,p_art_dx,2017,f,15-49,0.8750,0.8575,0.8906,1532.0000,0.8715,0.0054,-0.0035
+SHIMS,p_art_dx,2017,m,15+,0.9020,0.8794,0.9207,800.0000,0.9086,0.0096,0.0066
+SHIMS,p_art_dx,2017,f,15+,0.8810,0.8655,0.8950,1851.0000,0.8744,0.0063,-0.0066
+SHIMS,p_vls_art,2017,m,15-24,0.5760,0.4247,0.7143,41.0000,0.8988,0.0344,0.3228
+SHIMS,p_vls_art,2017,f,15-24,0.8120,0.7472,0.8632,173.0000,0.9221,0.0173,0.1101
+SHIMS,p_vls_art,2017,m,25-34,0.8500,0.7795,0.9008,133.0000,0.9134,0.0198,0.0634
+SHIMS,p_vls_art,2017,f,25-34,0.9120,0.8856,0.9328,557.0000,0.9235,0.0077,0.0115
+SHIMS,p_vls_art,2017,m,35-49,0.9240,0.8910,0.9476,342.0000,0.9148,0.0060,-0.0092
+SHIMS,p_vls_art,2017,f,35-49,0.9410,0.9194,0.9571,612.0000,0.9228,0.0093,-0.0182
+SHIMS,p_vls_art,2017,m,15-29,0.7630,0.6598,0.8424,81.0000,0.9066,0.0292,0.1436
+SHIMS,p_vls_art,2017,f,15-29,0.8630,0.8265,0.8928,413.0000,0.9235,0.0117,0.0605
+SHIMS,p_vls_art,2017,m,20-39,0.8560,0.8100,0.8924,279.0000,0.9138,0.0093,0.0578
+SHIMS,p_vls_art,2017,f,20-39,0.9050,0.8848,0.9220,956.0000,0.9218,0.0043,0.0168
+SHIMS,p_vls_art,2017,m,25+,0.9250,0.9029,0.9424,687.0000,0.9148,0.0021,-0.0102
+SHIMS,p_vls_art,2017,f,25+,0.9300,0.9158,0.9420,1468.0000,0.9236,0.0021,-0.0064
+SHIMS,p_vls_art,2017,m,15-49,0.8760,0.8448,0.9017,516.0000,0.9135,0.0050,0.0375
+SHIMS,p_vls_art,2017,f,15-49,0.9140,0.8978,0.9278,1342.0000,0.9230,0.0016,0.0090
+SHIMS,p_vls_art,2017,m,15+,0.9050,0.8815,0.9242,728.0000,0.9140,0.0013,0.0090
+SHIMS,p_vls_art,2017,f,15+,0.9190,0.9048,0.9312,1641.0000,0.9235,0.0009,0.0045
+Kasturi (model-PLHIV-weighted),p_dx,1995,all,15-49,0.0020,,,,0.0207,0.0025,0.0187
+Kasturi (model-PLHIV-weighted),p_dx,1995,f,15-49,0.0023,,,,0.0345,0.0042,0.0322
+Kasturi (model-PLHIV-weighted),p_dx,1995,m,15-49,0.0016,,,,0.0006,0.0006,-0.0011
+Kasturi (model-PLHIV-weighted),p_dx,1996,all,15-49,0.0029,,,,0.0314,0.0046,0.0285
+Kasturi (model-PLHIV-weighted),p_dx,1996,f,15-49,0.0033,,,,0.0492,0.0101,0.0459
+Kasturi (model-PLHIV-weighted),p_dx,1996,m,15-49,0.0024,,,,0.0056,0.0026,0.0032
+Kasturi (model-PLHIV-weighted),p_dx,1997,all,15-49,0.0042,,,,0.0443,0.0036,0.0401
+Kasturi (model-PLHIV-weighted),p_dx,1997,f,15-49,0.0047,,,,0.0633,0.0072,0.0586
+Kasturi (model-PLHIV-weighted),p_dx,1997,m,15-49,0.0034,,,,0.0162,0.0062,0.0127
+Kasturi (model-PLHIV-weighted),p_dx,1998,all,15-49,0.0061,,,,0.0618,0.0057,0.0557
+Kasturi (model-PLHIV-weighted),p_dx,1998,f,15-49,0.0068,,,,0.0798,0.0081,0.0729
+Kasturi (model-PLHIV-weighted),p_dx,1998,m,15-49,0.0050,,,,0.0346,0.0101,0.0296
+Kasturi (model-PLHIV-weighted),p_dx,1999,all,15-49,0.0087,,,,0.0821,0.0046,0.0734
+Kasturi (model-PLHIV-weighted),p_dx,1999,f,15-49,0.0098,,,,0.0981,0.0085,0.0884
+Kasturi (model-PLHIV-weighted),p_dx,1999,m,15-49,0.0071,,,,0.0575,0.0127,0.0505
+Kasturi (model-PLHIV-weighted),p_dx,2000,all,15-49,0.0123,,,,0.1103,0.0059,0.0980
+Kasturi (model-PLHIV-weighted),p_dx,2000,f,15-49,0.0138,,,,0.1246,0.0060,0.1108
+Kasturi (model-PLHIV-weighted),p_dx,2000,m,15-49,0.0100,,,,0.0882,0.0164,0.0782
+Kasturi (model-PLHIV-weighted),p_dx,2001,all,15-49,0.0174,,,,0.1434,0.0086,0.1260
+Kasturi (model-PLHIV-weighted),p_dx,2001,f,15-49,0.0194,,,,0.1566,0.0083,0.1372
+Kasturi (model-PLHIV-weighted),p_dx,2001,m,15-49,0.0141,,,,0.1227,0.0184,0.1086
+Kasturi (model-PLHIV-weighted),p_dx,2002,all,15-49,0.0242,,,,0.1785,0.0081,0.1544
+Kasturi (model-PLHIV-weighted),p_dx,2002,f,15-49,0.0270,,,,0.1912,0.0065,0.1642
+Kasturi (model-PLHIV-weighted),p_dx,2002,m,15-49,0.0197,,,,0.1586,0.0178,0.1389
+Kasturi (model-PLHIV-weighted),p_dx,2003,all,15-49,0.0335,,,,0.2183,0.0081,0.1848
+Kasturi (model-PLHIV-weighted),p_dx,2003,f,15-49,0.0373,,,,0.2345,0.0090,0.1972
+Kasturi (model-PLHIV-weighted),p_dx,2003,m,15-49,0.0274,,,,0.1925,0.0140,0.1651
+Kasturi (model-PLHIV-weighted),p_dx,2004,all,15-49,0.0462,,,,0.2643,0.0130,0.2181
+Kasturi (model-PLHIV-weighted),p_dx,2004,f,15-49,0.0513,,,,0.2850,0.0158,0.2337
+Kasturi (model-PLHIV-weighted),p_dx,2004,m,15-49,0.0381,,,,0.2317,0.0176,0.1936
+Kasturi (model-PLHIV-weighted),p_dx,2005,all,15-49,0.0635,,,,0.3206,0.0157,0.2571
+Kasturi (model-PLHIV-weighted),p_dx,2005,f,15-49,0.0701,,,,0.3438,0.0180,0.2737
+Kasturi (model-PLHIV-weighted),p_dx,2005,m,15-49,0.0530,,,,0.2843,0.0218,0.2313
+Kasturi (model-PLHIV-weighted),p_dx,2006,all,15-49,0.0872,,,,0.3775,0.0197,0.2903
+Kasturi (model-PLHIV-weighted),p_dx,2006,f,15-49,0.0961,,,,0.4029,0.0205,0.3069
+Kasturi (model-PLHIV-weighted),p_dx,2006,m,15-49,0.0735,,,,0.3381,0.0238,0.2646
+Kasturi (model-PLHIV-weighted),p_dx,2007,all,15-49,0.1189,,,,0.4326,0.0197,0.3137
+Kasturi (model-PLHIV-weighted),p_dx,2007,f,15-49,0.1304,,,,0.4607,0.0219,0.3303
+Kasturi (model-PLHIV-weighted),p_dx,2007,m,15-49,0.1010,,,,0.3890,0.0194,0.2880
+Kasturi (model-PLHIV-weighted),p_dx,2008,all,15-49,0.1597,,,,0.4834,0.0188,0.3237
+Kasturi (model-PLHIV-weighted),p_dx,2008,f,15-49,0.1745,,,,0.5125,0.0230,0.3380
+Kasturi (model-PLHIV-weighted),p_dx,2008,m,15-49,0.1369,,,,0.4389,0.0159,0.3020
+Kasturi (model-PLHIV-weighted),p_dx,2009,all,15-49,0.2117,,,,0.5273,0.0209,0.3156
+Kasturi (model-PLHIV-weighted),p_dx,2009,f,15-49,0.2297,,,,0.5555,0.0219,0.3259
+Kasturi (model-PLHIV-weighted),p_dx,2009,m,15-49,0.1842,,,,0.4842,0.0217,0.3000
+Kasturi (model-PLHIV-weighted),p_dx,2010,all,15-49,0.2748,,,,0.5689,0.0204,0.2940
+Kasturi (model-PLHIV-weighted),p_dx,2010,f,15-49,0.2959,,,,0.5957,0.0207,0.2997
+Kasturi (model-PLHIV-weighted),p_dx,2010,m,15-49,0.2424,,,,0.5277,0.0229,0.2852
+Kasturi (model-PLHIV-weighted),p_dx,2011,all,15-49,0.3483,,,,0.6084,0.0165,0.2601
+Kasturi (model-PLHIV-weighted),p_dx,2011,f,15-49,0.3722,,,,0.6323,0.0188,0.2602
+Kasturi (model-PLHIV-weighted),p_dx,2011,m,15-49,0.3116,,,,0.5718,0.0161,0.2601
+Kasturi (model-PLHIV-weighted),p_dx,2012,all,15-49,0.4300,,,,0.6551,0.0129,0.2251
+Kasturi (model-PLHIV-weighted),p_dx,2012,f,15-49,0.4561,,,,0.6852,0.0141,0.2291
+Kasturi (model-PLHIV-weighted),p_dx,2012,m,15-49,0.3899,,,,0.6087,0.0143,0.2188
+Kasturi (model-PLHIV-weighted),p_dx,2013,all,15-49,0.5163,,,,0.7036,0.0089,0.1873
+Kasturi (model-PLHIV-weighted),p_dx,2013,f,15-49,0.5432,,,,0.7411,0.0101,0.1979
+Kasturi (model-PLHIV-weighted),p_dx,2013,m,15-49,0.4746,,,,0.6453,0.0104,0.1707
+Kasturi (model-PLHIV-weighted),p_dx,2014,all,15-49,0.6016,,,,0.7510,0.0076,0.1494
+Kasturi (model-PLHIV-weighted),p_dx,2014,f,15-49,0.6286,,,,0.7971,0.0076,0.1685
+Kasturi (model-PLHIV-weighted),p_dx,2014,m,15-49,0.5596,,,,0.6792,0.0129,0.1196
+Kasturi (model-PLHIV-weighted),p_dx,2015,all,15-49,0.6813,,,,0.7927,0.0072,0.1115
+Kasturi (model-PLHIV-weighted),p_dx,2015,f,15-49,0.7066,,,,0.8468,0.0076,0.1401
+Kasturi (model-PLHIV-weighted),p_dx,2015,m,15-49,0.6416,,,,0.7083,0.0142,0.0667
+Kasturi (model-PLHIV-weighted),p_dx,2016,all,15-49,0.7517,,,,0.8295,0.0070,0.0777
+Kasturi (model-PLHIV-weighted),p_dx,2016,f,15-49,0.7743,,,,0.8873,0.0068,0.1130
+Kasturi (model-PLHIV-weighted),p_dx,2016,m,15-49,0.7162,,,,0.7385,0.0132,0.0223
+Kasturi (model-PLHIV-weighted),p_dx,2017,all,15-49,0.8111,,,,0.8600,0.0060,0.0489
+Kasturi (model-PLHIV-weighted),p_dx,2017,f,15-49,0.8305,,,,0.9193,0.0051,0.0888
+Kasturi (model-PLHIV-weighted),p_dx,2017,m,15-49,0.7801,,,,0.7653,0.0133,-0.0148
+Kasturi (model-PLHIV-weighted),p_dx,2018,all,15-49,0.8588,,,,0.8816,0.0070,0.0228
+Kasturi (model-PLHIV-weighted),p_dx,2018,f,15-49,0.8750,,,,0.9400,0.0048,0.0650
+Kasturi (model-PLHIV-weighted),p_dx,2018,m,15-49,0.8327,,,,0.7877,0.0151,-0.0450
+Kasturi (model-PLHIV-weighted),p_dx,2019,all,15-49,0.8963,,,,0.9004,0.0060,0.0041
+Kasturi (model-PLHIV-weighted),p_dx,2019,f,15-49,0.9093,,,,0.9553,0.0040,0.0460
+Kasturi (model-PLHIV-weighted),p_dx,2019,m,15-49,0.8752,,,,0.8114,0.0117,-0.0638
+Kasturi (model-PLHIV-weighted),p_dx,2020,all,15-49,0.9250,,,,0.9145,0.0032,-0.0105
+Kasturi (model-PLHIV-weighted),p_dx,2020,f,15-49,0.9352,,,,0.9652,0.0035,0.0300
+Kasturi (model-PLHIV-weighted),p_dx,2020,m,15-49,0.9082,,,,0.8311,0.0076,-0.0771
+Kasturi (model-PLHIV-weighted),p_dx,2021,all,15-49,0.9462,,,,0.9222,0.0052,-0.0240
+Kasturi (model-PLHIV-weighted),p_dx,2021,f,15-49,0.9541,,,,0.9684,0.0031,0.0144
+Kasturi (model-PLHIV-weighted),p_dx,2021,m,15-49,0.9331,,,,0.8448,0.0107,-0.0882
+Kasturi (model-PLHIV-weighted),p_art_dx,1995,all,15-49,0.0004,,,,0.0000,0.0000,-0.0004
+Kasturi (model-PLHIV-weighted),p_art_dx,1995,f,15-49,0.0004,,,,0.0000,0.0000,-0.0004
+Kasturi (model-PLHIV-weighted),p_art_dx,1995,m,15-49,0.0004,,,,0.0000,0.0000,-0.0004
+Kasturi (model-PLHIV-weighted),p_art_dx,1996,all,15-49,0.0006,,,,0.0000,0.0000,-0.0006
+Kasturi (model-PLHIV-weighted),p_art_dx,1996,f,15-49,0.0006,,,,0.0000,0.0000,-0.0006
+Kasturi (model-PLHIV-weighted),p_art_dx,1996,m,15-49,0.0006,,,,0.0000,0.0000,-0.0006
+Kasturi (model-PLHIV-weighted),p_art_dx,1997,all,15-49,0.0009,,,,0.0000,0.0000,-0.0009
+Kasturi (model-PLHIV-weighted),p_art_dx,1997,f,15-49,0.0009,,,,0.0000,0.0000,-0.0009
+Kasturi (model-PLHIV-weighted),p_art_dx,1997,m,15-49,0.0010,,,,0.0000,0.0000,-0.0010
+Kasturi (model-PLHIV-weighted),p_art_dx,1998,all,15-49,0.0015,,,,0.0000,0.0000,-0.0015
+Kasturi (model-PLHIV-weighted),p_art_dx,1998,f,15-49,0.0014,,,,0.0000,0.0000,-0.0014
+Kasturi (model-PLHIV-weighted),p_art_dx,1998,m,15-49,0.0016,,,,0.0000,0.0000,-0.0016
+Kasturi (model-PLHIV-weighted),p_art_dx,1999,all,15-49,0.0023,,,,0.0000,0.0000,-0.0023
+Kasturi (model-PLHIV-weighted),p_art_dx,1999,f,15-49,0.0023,,,,0.0000,0.0000,-0.0023
+Kasturi (model-PLHIV-weighted),p_art_dx,1999,m,15-49,0.0025,,,,0.0000,0.0000,-0.0025
+Kasturi (model-PLHIV-weighted),p_art_dx,2000,all,15-49,0.0037,,,,0.0000,0.0000,-0.0037
+Kasturi (model-PLHIV-weighted),p_art_dx,2000,f,15-49,0.0035,,,,0.0000,0.0000,-0.0035
+Kasturi (model-PLHIV-weighted),p_art_dx,2000,m,15-49,0.0039,,,,0.0000,0.0000,-0.0039
+Kasturi (model-PLHIV-weighted),p_art_dx,2001,all,15-49,0.0057,,,,0.0000,0.0000,-0.0057
+Kasturi (model-PLHIV-weighted),p_art_dx,2001,f,15-49,0.0055,,,,0.0000,0.0000,-0.0055
+Kasturi (model-PLHIV-weighted),p_art_dx,2001,m,15-49,0.0061,,,,0.0000,0.0000,-0.0061
+Kasturi (model-PLHIV-weighted),p_art_dx,2002,all,15-49,0.0089,,,,0.0000,0.0000,-0.0089
+Kasturi (model-PLHIV-weighted),p_art_dx,2002,f,15-49,0.0086,,,,0.0000,0.0000,-0.0086
+Kasturi (model-PLHIV-weighted),p_art_dx,2002,m,15-49,0.0094,,,,0.0000,0.0000,-0.0094
+Kasturi (model-PLHIV-weighted),p_art_dx,2003,all,15-49,0.0136,,,,0.0000,0.0000,-0.0136
+Kasturi (model-PLHIV-weighted),p_art_dx,2003,f,15-49,0.0132,,,,0.0000,0.0000,-0.0132
+Kasturi (model-PLHIV-weighted),p_art_dx,2003,m,15-49,0.0145,,,,0.0000,0.0000,-0.0145
+Kasturi (model-PLHIV-weighted),p_art_dx,2004,all,15-49,0.0210,,,,0.0609,0.0037,0.0399
+Kasturi (model-PLHIV-weighted),p_art_dx,2004,f,15-49,0.0203,,,,0.0599,0.0042,0.0396
+Kasturi (model-PLHIV-weighted),p_art_dx,2004,m,15-49,0.0224,,,,0.0629,0.0050,0.0405
+Kasturi (model-PLHIV-weighted),p_art_dx,2005,all,15-49,0.0319,,,,0.1894,0.0110,0.1574
+Kasturi (model-PLHIV-weighted),p_art_dx,2005,f,15-49,0.0307,,,,0.1863,0.0114,0.1556
+Kasturi (model-PLHIV-weighted),p_art_dx,2005,m,15-49,0.0344,,,,0.1958,0.0160,0.1614
+Kasturi (model-PLHIV-weighted),p_art_dx,2006,all,15-49,0.0485,,,,0.2832,0.0166,0.2347
+Kasturi (model-PLHIV-weighted),p_art_dx,2006,f,15-49,0.0465,,,,0.2792,0.0161,0.2327
+Kasturi (model-PLHIV-weighted),p_art_dx,2006,m,15-49,0.0525,,,,0.2908,0.0210,0.2383
+Kasturi (model-PLHIV-weighted),p_art_dx,2007,all,15-49,0.0730,,,,0.3535,0.0187,0.2805
+Kasturi (model-PLHIV-weighted),p_art_dx,2007,f,15-49,0.0697,,,,0.3494,0.0199,0.2797
+Kasturi (model-PLHIV-weighted),p_art_dx,2007,m,15-49,0.0796,,,,0.3610,0.0176,0.2814
+Kasturi (model-PLHIV-weighted),p_art_dx,2008,all,15-49,0.1085,,,,0.4137,0.0197,0.3051
+Kasturi (model-PLHIV-weighted),p_art_dx,2008,f,15-49,0.1033,,,,0.4109,0.0239,0.3076
+Kasturi (model-PLHIV-weighted),p_art_dx,2008,m,15-49,0.1188,,,,0.4185,0.0162,0.2997
+Kasturi (model-PLHIV-weighted),p_art_dx,2009,all,15-49,0.1583,,,,0.4701,0.0219,0.3118
+Kasturi (model-PLHIV-weighted),p_art_dx,2009,f,15-49,0.1505,,,,0.4691,0.0237,0.3186
+Kasturi (model-PLHIV-weighted),p_art_dx,2009,m,15-49,0.1734,,,,0.4718,0.0202,0.2984
+Kasturi (model-PLHIV-weighted),p_art_dx,2010,all,15-49,0.2254,,,,0.5217,0.0215,0.2964
+Kasturi (model-PLHIV-weighted),p_art_dx,2010,f,15-49,0.2145,,,,0.5227,0.0219,0.3082
+Kasturi (model-PLHIV-weighted),p_art_dx,2010,m,15-49,0.2458,,,,0.5200,0.0220,0.2742
+Kasturi (model-PLHIV-weighted),p_art_dx,2011,all,15-49,0.3098,,,,0.5836,0.0165,0.2737
+Kasturi (model-PLHIV-weighted),p_art_dx,2011,f,15-49,0.2961,,,,0.5895,0.0194,0.2934
+Kasturi (model-PLHIV-weighted),p_art_dx,2011,m,15-49,0.3350,,,,0.5733,0.0127,0.2384
+Kasturi (model-PLHIV-weighted),p_art_dx,2012,all,15-49,0.4092,,,,0.6514,0.0135,0.2422
+Kasturi (model-PLHIV-weighted),p_art_dx,2012,f,15-49,0.3938,,,,0.6542,0.0153,0.2605
+Kasturi (model-PLHIV-weighted),p_art_dx,2012,m,15-49,0.4370,,,,0.6465,0.0122,0.2095
+Kasturi (model-PLHIV-weighted),p_art_dx,2013,all,15-49,0.5166,,,,0.7063,0.0101,0.1896
+Kasturi (model-PLHIV-weighted),p_art_dx,2013,f,15-49,0.5009,,,,0.7047,0.0114,0.2038
+Kasturi (model-PLHIV-weighted),p_art_dx,2013,m,15-49,0.5446,,,,0.7092,0.0105,0.1646
+Kasturi (model-PLHIV-weighted),p_art_dx,2014,all,15-49,0.6228,,,,0.7544,0.0082,0.1316
+Kasturi (model-PLHIV-weighted),p_art_dx,2014,f,15-49,0.6084,,,,0.7465,0.0078,0.1382
+Kasturi (model-PLHIV-weighted),p_art_dx,2014,m,15-49,0.6481,,,,0.7689,0.0136,0.1209
+Kasturi (model-PLHIV-weighted),p_art_dx,2015,all,15-49,0.7195,,,,0.8037,0.0081,0.0842
+Kasturi (model-PLHIV-weighted),p_art_dx,2015,f,15-49,0.7076,,,,0.7891,0.0081,0.0814
+Kasturi (model-PLHIV-weighted),p_art_dx,2015,m,15-49,0.7398,,,,0.8311,0.0169,0.0913
+Kasturi (model-PLHIV-weighted),p_art_dx,2016,all,15-49,0.8003,,,,0.8536,0.0075,0.0533
+Kasturi (model-PLHIV-weighted),p_art_dx,2016,f,15-49,0.7913,,,,0.8370,0.0071,0.0457
+Kasturi (model-PLHIV-weighted),p_art_dx,2016,m,15-49,0.8157,,,,0.8852,0.0144,0.0695
+Kasturi (model-PLHIV-weighted),p_art_dx,2017,all,15-49,0.8627,,,,0.8895,0.0056,0.0269
+Kasturi (model-PLHIV-weighted),p_art_dx,2017,f,15-49,0.8563,,,,0.8715,0.0054,0.0152
+Kasturi (model-PLHIV-weighted),p_art_dx,2017,m,15-49,0.8734,,,,0.9242,0.0124,0.0508
+Kasturi (model-PLHIV-weighted),p_art_dx,2018,all,15-49,0.9081,,,,0.9065,0.0059,-0.0016
+Kasturi (model-PLHIV-weighted),p_art_dx,2018,f,15-49,0.9038,,,,0.8876,0.0038,-0.0162
+Kasturi (model-PLHIV-weighted),p_art_dx,2018,m,15-49,0.9153,,,,0.9429,0.0146,0.0277
+Kasturi (model-PLHIV-weighted),p_art_dx,2019,all,15-49,0.9397,,,,0.9260,0.0054,-0.0138
+Kasturi (model-PLHIV-weighted),p_art_dx,2019,f,15-49,0.9370,,,,0.9086,0.0028,-0.0284
+Kasturi (model-PLHIV-weighted),p_art_dx,2019,m,15-49,0.9443,,,,0.9592,0.0129,0.0149
+Kasturi (model-PLHIV-weighted),p_art_dx,2020,all,15-49,0.9609,,,,0.9481,0.0033,-0.0128
+Kasturi (model-PLHIV-weighted),p_art_dx,2020,f,15-49,0.9591,,,,0.9334,0.0025,-0.0258
+Kasturi (model-PLHIV-weighted),p_art_dx,2020,m,15-49,0.9639,,,,0.9763,0.0084,0.0125
+Kasturi (model-PLHIV-weighted),p_art_dx,2021,all,15-49,0.9748,,,,0.9616,0.0042,-0.0132
+Kasturi (model-PLHIV-weighted),p_art_dx,2021,f,15-49,0.9737,,,,0.9509,0.0025,-0.0228
+Kasturi (model-PLHIV-weighted),p_art_dx,2021,m,15-49,0.9767,,,,0.9822,0.0097,0.0055
+Kasturi (model-PLHIV-weighted),p_dx,1995,all,15+,0.0021,,,,0.0203,0.0025,0.0182
+Kasturi (model-PLHIV-weighted),p_dx,1995,f,15+,0.0023,,,,0.0341,0.0044,0.0318
+Kasturi (model-PLHIV-weighted),p_dx,1995,m,15+,0.0017,,,,0.0006,0.0006,-0.0011
+Kasturi (model-PLHIV-weighted),p_dx,1996,all,15+,0.0030,,,,0.0312,0.0043,0.0281
+Kasturi (model-PLHIV-weighted),p_dx,1996,f,15+,0.0034,,,,0.0485,0.0095,0.0451
+Kasturi (model-PLHIV-weighted),p_dx,1996,m,15+,0.0025,,,,0.0066,0.0029,0.0040
+Kasturi (model-PLHIV-weighted),p_dx,1997,all,15+,0.0044,,,,0.0447,0.0033,0.0403
+Kasturi (model-PLHIV-weighted),p_dx,1997,f,15+,0.0049,,,,0.0624,0.0071,0.0574
+Kasturi (model-PLHIV-weighted),p_dx,1997,m,15+,0.0037,,,,0.0195,0.0068,0.0158
+Kasturi (model-PLHIV-weighted),p_dx,1998,all,15+,0.0064,,,,0.0641,0.0057,0.0577
+Kasturi (model-PLHIV-weighted),p_dx,1998,f,15+,0.0071,,,,0.0785,0.0082,0.0714
+Kasturi (model-PLHIV-weighted),p_dx,1998,m,15+,0.0053,,,,0.0431,0.0106,0.0378
+Kasturi (model-PLHIV-weighted),p_dx,1999,all,15+,0.0092,,,,0.0863,0.0052,0.0771
+Kasturi (model-PLHIV-weighted),p_dx,1999,f,15+,0.0103,,,,0.0959,0.0085,0.0857
+Kasturi (model-PLHIV-weighted),p_dx,1999,m,15+,0.0076,,,,0.0723,0.0161,0.0647
+Kasturi (model-PLHIV-weighted),p_dx,2000,all,15+,0.0132,,,,0.1170,0.0072,0.1038
+Kasturi (model-PLHIV-weighted),p_dx,2000,f,15+,0.0147,,,,0.1216,0.0058,0.1069
+Kasturi (model-PLHIV-weighted),p_dx,2000,m,15+,0.0109,,,,0.1103,0.0201,0.0994
+Kasturi (model-PLHIV-weighted),p_dx,2001,all,15+,0.0186,,,,0.1517,0.0103,0.1330
+Kasturi (model-PLHIV-weighted),p_dx,2001,f,15+,0.0207,,,,0.1522,0.0078,0.1314
+Kasturi (model-PLHIV-weighted),p_dx,2001,m,15+,0.0155,,,,0.1511,0.0227,0.1355
+Kasturi (model-PLHIV-weighted),p_dx,2002,all,15+,0.0261,,,,0.1890,0.0099,0.1629
+Kasturi (model-PLHIV-weighted),p_dx,2002,f,15+,0.0290,,,,0.1848,0.0056,0.1558
+Kasturi (model-PLHIV-weighted),p_dx,2002,m,15+,0.0218,,,,0.1952,0.0220,0.1733
+Kasturi (model-PLHIV-weighted),p_dx,2003,all,15+,0.0364,,,,0.2298,0.0107,0.1934
+Kasturi (model-PLHIV-weighted),p_dx,2003,f,15+,0.0404,,,,0.2260,0.0061,0.1856
+Kasturi (model-PLHIV-weighted),p_dx,2003,m,15+,0.0304,,,,0.2353,0.0219,0.2049
+Kasturi (model-PLHIV-weighted),p_dx,2004,all,15+,0.0504,,,,0.2766,0.0152,0.2261
+Kasturi (model-PLHIV-weighted),p_dx,2004,f,15+,0.0559,,,,0.2737,0.0124,0.2179
+Kasturi (model-PLHIV-weighted),p_dx,2004,m,15+,0.0424,,,,0.2806,0.0261,0.2382
+Kasturi (model-PLHIV-weighted),p_dx,2005,all,15+,0.0695,,,,0.3337,0.0181,0.2642
+Kasturi (model-PLHIV-weighted),p_dx,2005,f,15+,0.0766,,,,0.3306,0.0141,0.2539
+Kasturi (model-PLHIV-weighted),p_dx,2005,m,15+,0.0589,,,,0.3380,0.0293,0.2791
+Kasturi (model-PLHIV-weighted),p_dx,2006,all,15+,0.0951,,,,0.3907,0.0209,0.2955
+Kasturi (model-PLHIV-weighted),p_dx,2006,f,15+,0.1046,,,,0.3883,0.0166,0.2837
+Kasturi (model-PLHIV-weighted),p_dx,2006,m,15+,0.0814,,,,0.3940,0.0291,0.3126
+Kasturi (model-PLHIV-weighted),p_dx,2007,all,15+,0.1289,,,,0.4458,0.0200,0.3168
+Kasturi (model-PLHIV-weighted),p_dx,2007,f,15+,0.1410,,,,0.4453,0.0188,0.3042
+Kasturi (model-PLHIV-weighted),p_dx,2007,m,15+,0.1115,,,,0.4465,0.0225,0.3351
+Kasturi (model-PLHIV-weighted),p_dx,2008,all,15+,0.1723,,,,0.4964,0.0195,0.3242
+Kasturi (model-PLHIV-weighted),p_dx,2008,f,15+,0.1876,,,,0.4970,0.0209,0.3094
+Kasturi (model-PLHIV-weighted),p_dx,2008,m,15+,0.1502,,,,0.4958,0.0192,0.3456
+Kasturi (model-PLHIV-weighted),p_dx,2009,all,15+,0.2264,,,,0.5404,0.0212,0.3140
+Kasturi (model-PLHIV-weighted),p_dx,2009,f,15+,0.2449,,,,0.5413,0.0211,0.2964
+Kasturi (model-PLHIV-weighted),p_dx,2009,m,15+,0.1999,,,,0.5393,0.0238,0.3394
+Kasturi (model-PLHIV-weighted),p_dx,2010,all,15+,0.2914,,,,0.5819,0.0210,0.2906
+Kasturi (model-PLHIV-weighted),p_dx,2010,f,15+,0.3125,,,,0.5831,0.0211,0.2707
+Kasturi (model-PLHIV-weighted),p_dx,2010,m,15+,0.2611,,,,0.5802,0.0224,0.3191
+Kasturi (model-PLHIV-weighted),p_dx,2011,all,15+,0.3662,,,,0.6225,0.0179,0.2563
+Kasturi (model-PLHIV-weighted),p_dx,2011,f,15+,0.3896,,,,0.6228,0.0201,0.2333
+Kasturi (model-PLHIV-weighted),p_dx,2011,m,15+,0.3327,,,,0.6220,0.0175,0.2892
+Kasturi (model-PLHIV-weighted),p_dx,2012,all,15+,0.4485,,,,0.6703,0.0141,0.2218
+Kasturi (model-PLHIV-weighted),p_dx,2012,f,15+,0.4735,,,,0.6793,0.0159,0.2058
+Kasturi (model-PLHIV-weighted),p_dx,2012,m,15+,0.4127,,,,0.6573,0.0146,0.2447
+Kasturi (model-PLHIV-weighted),p_dx,2013,all,15+,0.5341,,,,0.7189,0.0099,0.1848
+Kasturi (model-PLHIV-weighted),p_dx,2013,f,15+,0.5595,,,,0.7375,0.0112,0.1781
+Kasturi (model-PLHIV-weighted),p_dx,2013,m,15+,0.4977,,,,0.6920,0.0103,0.1944
+Kasturi (model-PLHIV-weighted),p_dx,2014,all,15+,0.6184,,,,0.7661,0.0081,0.1476
+Kasturi (model-PLHIV-weighted),p_dx,2014,f,15+,0.6435,,,,0.7953,0.0083,0.1518
+Kasturi (model-PLHIV-weighted),p_dx,2014,m,15+,0.5825,,,,0.7240,0.0123,0.1415
+Kasturi (model-PLHIV-weighted),p_dx,2015,all,15+,0.6962,,,,0.8077,0.0071,0.1115
+Kasturi (model-PLHIV-weighted),p_dx,2015,f,15+,0.7194,,,,0.8472,0.0079,0.1278
+Kasturi (model-PLHIV-weighted),p_dx,2015,m,15+,0.6629,,,,0.7508,0.0134,0.0879
+Kasturi (model-PLHIV-weighted),p_dx,2016,all,15+,0.7645,,,,0.8436,0.0068,0.0791
+Kasturi (model-PLHIV-weighted),p_dx,2016,f,15+,0.7849,,,,0.8885,0.0078,0.1037
+Kasturi (model-PLHIV-weighted),p_dx,2016,m,15+,0.7352,,,,0.7789,0.0111,0.0437
+Kasturi (model-PLHIV-weighted),p_dx,2017,all,15+,0.8218,,,,0.8738,0.0056,0.0520
+Kasturi (model-PLHIV-weighted),p_dx,2017,f,15+,0.8390,,,,0.9216,0.0056,0.0826
+Kasturi (model-PLHIV-weighted),p_dx,2017,m,15+,0.7968,,,,0.8046,0.0109,0.0078
+Kasturi (model-PLHIV-weighted),p_dx,2018,all,15+,0.8676,,,,0.8948,0.0064,0.0273
+Kasturi (model-PLHIV-weighted),p_dx,2018,f,15+,0.8818,,,,0.9427,0.0052,0.0609
+Kasturi (model-PLHIV-weighted),p_dx,2018,m,15+,0.8469,,,,0.8254,0.0117,-0.0215
+Kasturi (model-PLHIV-weighted),p_dx,2019,all,15+,0.9034,,,,0.9130,0.0050,0.0097
+Kasturi (model-PLHIV-weighted),p_dx,2019,f,15+,0.9147,,,,0.9583,0.0039,0.0436
+Kasturi (model-PLHIV-weighted),p_dx,2019,m,15+,0.8869,,,,0.8474,0.0083,-0.0395
+Kasturi (model-PLHIV-weighted),p_dx,2020,all,15+,0.9306,,,,0.9265,0.0025,-0.0041
+Kasturi (model-PLHIV-weighted),p_dx,2020,f,15+,0.9394,,,,0.9681,0.0032,0.0287
+Kasturi (model-PLHIV-weighted),p_dx,2020,m,15+,0.9178,,,,0.8659,0.0048,-0.0519
+Kasturi (model-PLHIV-weighted),p_dx,2021,all,15+,0.9505,,,,0.9341,0.0043,-0.0165
+Kasturi (model-PLHIV-weighted),p_dx,2021,f,15+,0.9573,,,,0.9715,0.0028,0.0143
+Kasturi (model-PLHIV-weighted),p_dx,2021,m,15+,0.9407,,,,0.8791,0.0077,-0.0616
+Kasturi (model-PLHIV-weighted),p_art_dx,1995,all,15+,0.0004,,,,0.0000,0.0000,-0.0004
+Kasturi (model-PLHIV-weighted),p_art_dx,1995,f,15+,0.0004,,,,0.0000,0.0000,-0.0004
+Kasturi (model-PLHIV-weighted),p_art_dx,1995,m,15+,0.0004,,,,0.0000,0.0000,-0.0004
+Kasturi (model-PLHIV-weighted),p_art_dx,1996,all,15+,0.0006,,,,0.0000,0.0000,-0.0006
+Kasturi (model-PLHIV-weighted),p_art_dx,1996,f,15+,0.0006,,,,0.0000,0.0000,-0.0006
+Kasturi (model-PLHIV-weighted),p_art_dx,1996,m,15+,0.0007,,,,0.0000,0.0000,-0.0007
+Kasturi (model-PLHIV-weighted),p_art_dx,1997,all,15+,0.0010,,,,0.0000,0.0000,-0.0010
+Kasturi (model-PLHIV-weighted),p_art_dx,1997,f,15+,0.0010,,,,0.0000,0.0000,-0.0010
+Kasturi (model-PLHIV-weighted),p_art_dx,1997,m,15+,0.0011,,,,0.0000,0.0000,-0.0011
+Kasturi (model-PLHIV-weighted),p_art_dx,1998,all,15+,0.0016,,,,0.0000,0.0000,-0.0016
+Kasturi (model-PLHIV-weighted),p_art_dx,1998,f,15+,0.0015,,,,0.0000,0.0000,-0.0015
+Kasturi (model-PLHIV-weighted),p_art_dx,1998,m,15+,0.0018,,,,0.0000,0.0000,-0.0018
+Kasturi (model-PLHIV-weighted),p_art_dx,1999,all,15+,0.0025,,,,0.0000,0.0000,-0.0025
+Kasturi (model-PLHIV-weighted),p_art_dx,1999,f,15+,0.0024,,,,0.0000,0.0000,-0.0024
+Kasturi (model-PLHIV-weighted),p_art_dx,1999,m,15+,0.0029,,,,0.0000,0.0000,-0.0029
+Kasturi (model-PLHIV-weighted),p_art_dx,2000,all,15+,0.0040,,,,0.0000,0.0000,-0.0040
+Kasturi (model-PLHIV-weighted),p_art_dx,2000,f,15+,0.0038,,,,0.0000,0.0000,-0.0038
+Kasturi (model-PLHIV-weighted),p_art_dx,2000,m,15+,0.0045,,,,0.0000,0.0000,-0.0045
+Kasturi (model-PLHIV-weighted),p_art_dx,2001,all,15+,0.0063,,,,0.0000,0.0000,-0.0063
+Kasturi (model-PLHIV-weighted),p_art_dx,2001,f,15+,0.0059,,,,0.0000,0.0000,-0.0059
+Kasturi (model-PLHIV-weighted),p_art_dx,2001,m,15+,0.0071,,,,0.0000,0.0000,-0.0071
+Kasturi (model-PLHIV-weighted),p_art_dx,2002,all,15+,0.0099,,,,0.0000,0.0000,-0.0099
+Kasturi (model-PLHIV-weighted),p_art_dx,2002,f,15+,0.0093,,,,0.0000,0.0000,-0.0093
+Kasturi (model-PLHIV-weighted),p_art_dx,2002,m,15+,0.0112,,,,0.0000,0.0000,-0.0112
+Kasturi (model-PLHIV-weighted),p_art_dx,2003,all,15+,0.0155,,,,0.0000,0.0000,-0.0155
+Kasturi (model-PLHIV-weighted),p_art_dx,2003,f,15+,0.0145,,,,0.0000,0.0000,-0.0145
+Kasturi (model-PLHIV-weighted),p_art_dx,2003,m,15+,0.0175,,,,0.0000,0.0000,-0.0175
+Kasturi (model-PLHIV-weighted),p_art_dx,2004,all,15+,0.0242,,,,0.0584,0.0033,0.0342
+Kasturi (model-PLHIV-weighted),p_art_dx,2004,f,15+,0.0225,,,,0.0621,0.0034,0.0397
+Kasturi (model-PLHIV-weighted),p_art_dx,2004,m,15+,0.0275,,,,0.0532,0.0051,0.0257
+Kasturi (model-PLHIV-weighted),p_art_dx,2005,all,15+,0.0372,,,,0.1849,0.0107,0.1477
+Kasturi (model-PLHIV-weighted),p_art_dx,2005,f,15+,0.0344,,,,0.1949,0.0089,0.1604
+Kasturi (model-PLHIV-weighted),p_art_dx,2005,m,15+,0.0426,,,,0.1712,0.0161,0.1286
+Kasturi (model-PLHIV-weighted),p_art_dx,2006,all,15+,0.0569,,,,0.2787,0.0149,0.2219
+Kasturi (model-PLHIV-weighted),p_art_dx,2006,f,15+,0.0523,,,,0.2921,0.0115,0.2398
+Kasturi (model-PLHIV-weighted),p_art_dx,2006,m,15+,0.0653,,,,0.2599,0.0196,0.1946
+Kasturi (model-PLHIV-weighted),p_art_dx,2007,all,15+,0.0857,,,,0.3492,0.0156,0.2636
+Kasturi (model-PLHIV-weighted),p_art_dx,2007,f,15+,0.0786,,,,0.3641,0.0160,0.2855
+Kasturi (model-PLHIV-weighted),p_art_dx,2007,m,15+,0.0986,,,,0.3278,0.0148,0.2292
+Kasturi (model-PLHIV-weighted),p_art_dx,2008,all,15+,0.1263,,,,0.4108,0.0165,0.2845
+Kasturi (model-PLHIV-weighted),p_art_dx,2008,f,15+,0.1161,,,,0.4278,0.0197,0.3116
+Kasturi (model-PLHIV-weighted),p_art_dx,2008,m,15+,0.1446,,,,0.3863,0.0138,0.2417
+Kasturi (model-PLHIV-weighted),p_art_dx,2009,all,15+,0.1812,,,,0.4680,0.0183,0.2868
+Kasturi (model-PLHIV-weighted),p_art_dx,2009,f,15+,0.1675,,,,0.4869,0.0196,0.3194
+Kasturi (model-PLHIV-weighted),p_art_dx,2009,m,15+,0.2053,,,,0.4406,0.0169,0.2353
+Kasturi (model-PLHIV-weighted),p_art_dx,2010,all,15+,0.2525,,,,0.5205,0.0182,0.2680
+Kasturi (model-PLHIV-weighted),p_art_dx,2010,f,15+,0.2349,,,,0.5404,0.0185,0.3055
+Kasturi (model-PLHIV-weighted),p_art_dx,2010,m,15+,0.2826,,,,0.4917,0.0178,0.2090
+Kasturi (model-PLHIV-weighted),p_art_dx,2011,all,15+,0.3397,,,,0.5826,0.0141,0.2429
+Kasturi (model-PLHIV-weighted),p_art_dx,2011,f,15+,0.3191,,,,0.6073,0.0167,0.2882
+Kasturi (model-PLHIV-weighted),p_art_dx,2011,m,15+,0.3743,,,,0.5473,0.0114,0.1731
+Kasturi (model-PLHIV-weighted),p_art_dx,2012,all,15+,0.4395,,,,0.6489,0.0119,0.2094
+Kasturi (model-PLHIV-weighted),p_art_dx,2012,f,15+,0.4172,,,,0.6685,0.0143,0.2513
+Kasturi (model-PLHIV-weighted),p_art_dx,2012,m,15+,0.4762,,,,0.6199,0.0102,0.1437
+Kasturi (model-PLHIV-weighted),p_art_dx,2013,all,15+,0.5445,,,,0.7032,0.0091,0.1587
+Kasturi (model-PLHIV-weighted),p_art_dx,2013,f,15+,0.5224,,,,0.7158,0.0111,0.1934
+Kasturi (model-PLHIV-weighted),p_art_dx,2013,m,15+,0.5802,,,,0.6840,0.0087,0.1038
+Kasturi (model-PLHIV-weighted),p_art_dx,2014,all,15+,0.6468,,,,0.7517,0.0079,0.1049
+Kasturi (model-PLHIV-weighted),p_art_dx,2014,f,15+,0.6270,,,,0.7555,0.0084,0.1285
+Kasturi (model-PLHIV-weighted),p_art_dx,2014,m,15+,0.6782,,,,0.7458,0.0112,0.0676
+Kasturi (model-PLHIV-weighted),p_art_dx,2015,all,15+,0.7385,,,,0.8007,0.0080,0.0622
+Kasturi (model-PLHIV-weighted),p_art_dx,2015,f,15+,0.7224,,,,0.7951,0.0091,0.0727
+Kasturi (model-PLHIV-weighted),p_art_dx,2015,m,15+,0.7636,,,,0.8100,0.0142,0.0464
+Kasturi (model-PLHIV-weighted),p_art_dx,2016,all,15+,0.8147,,,,0.8513,0.0076,0.0366
+Kasturi (model-PLHIV-weighted),p_art_dx,2016,f,15+,0.8024,,,,0.8415,0.0085,0.0391
+Kasturi (model-PLHIV-weighted),p_art_dx,2016,m,15+,0.8336,,,,0.8674,0.0116,0.0338
+Kasturi (model-PLHIV-weighted),p_art_dx,2017,all,15+,0.8731,,,,0.8872,0.0056,0.0141
+Kasturi (model-PLHIV-weighted),p_art_dx,2017,f,15+,0.8643,,,,0.8744,0.0063,0.0101
+Kasturi (model-PLHIV-weighted),p_art_dx,2017,m,15+,0.8865,,,,0.9086,0.0096,0.0221
+Kasturi (model-PLHIV-weighted),p_art_dx,2018,all,15+,0.9155,,,,0.9046,0.0056,-0.0109
+Kasturi (model-PLHIV-weighted),p_art_dx,2018,f,15+,0.9095,,,,0.8900,0.0046,-0.0195
+Kasturi (model-PLHIV-weighted),p_art_dx,2018,m,15+,0.9245,,,,0.9288,0.0111,0.0044
+Kasturi (model-PLHIV-weighted),p_art_dx,2019,all,15+,0.9448,,,,0.9245,0.0049,-0.0203
+Kasturi (model-PLHIV-weighted),p_art_dx,2019,f,15+,0.9409,,,,0.9106,0.0034,-0.0303
+Kasturi (model-PLHIV-weighted),p_art_dx,2019,m,15+,0.9507,,,,0.9473,0.0097,-0.0034
+Kasturi (model-PLHIV-weighted),p_art_dx,2020,all,15+,0.9644,,,,0.9472,0.0030,-0.0172
+Kasturi (model-PLHIV-weighted),p_art_dx,2020,f,15+,0.9618,,,,0.9354,0.0027,-0.0264
+Kasturi (model-PLHIV-weighted),p_art_dx,2020,m,15+,0.9682,,,,0.9665,0.0062,-0.0018
+Kasturi (model-PLHIV-weighted),p_art_dx,2021,all,15+,0.9772,,,,0.9611,0.0037,-0.0161
+Kasturi (model-PLHIV-weighted),p_art_dx,2021,f,15+,0.9755,,,,0.9528,0.0025,-0.0227
+Kasturi (model-PLHIV-weighted),p_art_dx,2021,m,15+,0.9797,,,,0.9746,0.0071,-0.0050
+Kasturi,p_dx,2011,f,15-19,0.2977,,,,0.3686,,0.0709
+Kasturi,p_dx,2011,m,15-19,0.1804,,,,0.7236,,0.5432
+Kasturi,p_dx,2011,f,20-24,0.2164,,,,0.4372,,0.2208
+Kasturi,p_dx,2011,m,20-24,0.1254,,,,0.1054,,-0.0200
+Kasturi,p_dx,2011,f,25-29,0.2304,,,,0.5751,,0.3448
+Kasturi,p_dx,2011,m,25-29,0.1345,,,,0.3436,,0.2091
+Kasturi,p_dx,2011,f,30-34,0.3912,,,,0.6927,,0.3015
+Kasturi,p_dx,2011,m,30-34,0.2501,,,,0.5562,,0.3061
+Kasturi,p_dx,2011,f,35-39,0.5157,,,,0.7734,,0.2578
+Kasturi,p_dx,2011,m,35-39,0.3560,,,,0.6244,,0.2684
+Kasturi,p_dx,2011,f,40-44,0.5699,,,,0.7519,,0.1820
+Kasturi,p_dx,2011,m,40-44,0.4075,,,,0.6901,,0.2826
+Kasturi,p_dx,2011,f,45-49,0.6789,,,,0.6489,,-0.0301
+Kasturi,p_dx,2011,m,45-49,0.5233,,,,0.7491,,0.2258
+Kasturi,p_dx,2011,f,50-54,0.6821,,,,0.4897,,-0.1924
+Kasturi,p_dx,2011,m,50-54,0.5270,,,,0.9374,,0.4105
+Kasturi,p_dx,2011,f,55-59,0.5980,,,,0.4608,,-0.1373
+Kasturi,p_dx,2011,m,55-59,0.4358,,,,0.9785,,0.5427
+Kasturi,p_dx,2011,f,60-64,0.5920,,,,0.4268,,-0.1652
+Kasturi,p_dx,2011,m,60-64,0.4297,,,,0.9870,,0.5573
+Kasturi,p_dx,2011,f,65-69,0.5900,,,,0.8249,,0.2348
+Kasturi,p_dx,2011,m,65-69,0.4276,,,,0.9952,,0.5676
+Kasturi,p_dx,2011,f,70-74,0.6836,,,,1.0000,,0.3164
+Kasturi,p_dx,2011,m,70-74,0.5287,,,,0.9975,,0.4688
+Kasturi,p_dx,2011,f,75-79,0.7341,,,,,,
+Kasturi,p_dx,2011,m,75-79,0.5890,,,,1.0000,,0.4110
+Kasturi,p_dx,2011,f,80-84,0.6641,,,,,,
+Kasturi,p_dx,2011,m,80-84,0.5065,,,,,,
+Kasturi,p_art_dx,2011,f,15-19,0.3702,,,,0.7293,,0.3591
+Kasturi,p_art_dx,2011,m,15-19,0.3746,,,,0.5433,,0.1687
+Kasturi,p_art_dx,2011,f,20-24,0.2720,,,,0.5674,,0.2954
+Kasturi,p_art_dx,2011,m,20-24,0.2757,,,,0.3691,,0.0933
+Kasturi,p_art_dx,2011,f,25-29,0.2499,,,,0.5282,,0.2782
+Kasturi,p_art_dx,2011,m,25-29,0.2535,,,,0.5609,,0.3075
+Kasturi,p_art_dx,2011,f,30-34,0.2135,,,,0.5632,,0.3497
+Kasturi,p_art_dx,2011,m,30-34,0.2167,,,,0.4488,,0.2322
+Kasturi,p_art_dx,2011,f,35-39,0.3055,,,,0.6434,,0.3379
+Kasturi,p_art_dx,2011,m,35-39,0.3095,,,,0.5846,,0.2751
+Kasturi,p_art_dx,2011,f,40-44,0.4692,,,,0.6692,,0.2000
+Kasturi,p_art_dx,2011,m,40-44,0.4739,,,,0.6601,,0.1862
+Kasturi,p_art_dx,2011,f,45-49,0.3595,,,,0.6637,,0.3042
+Kasturi,p_art_dx,2011,m,45-49,0.3638,,,,0.6775,,0.3137
+Kasturi,p_art_dx,2011,f,50-54,0.4492,,,,0.9539,,0.5047
+Kasturi,p_art_dx,2011,m,50-54,0.4539,,,,0.5052,,0.0513
+Kasturi,p_art_dx,2011,f,55-59,0.5008,,,,0.9408,,0.4400
+Kasturi,p_art_dx,2011,m,55-59,0.5056,,,,0.4001,,-0.1055
+Kasturi,p_art_dx,2011,f,60-64,0.7474,,,,0.9182,,0.1709
+Kasturi,p_art_dx,2011,m,60-64,0.7509,,,,0.3866,,-0.3643
+Kasturi,p_art_dx,2011,f,65-69,0.8028,,,,0.9844,,0.1816
+Kasturi,p_art_dx,2011,m,65-69,0.8058,,,,0.3835,,-0.4223
+Kasturi,p_art_dx,2011,f,70-74,0.7089,,,,1.0000,,0.2911
+Kasturi,p_art_dx,2011,m,70-74,0.7128,,,,0.4490,,-0.2638
+Kasturi,p_art_dx,2011,f,75-79,0.5046,,,,,,
+Kasturi,p_art_dx,2011,m,75-79,0.5093,,,,0.5000,,-0.0093
+Kasturi,p_art_dx,2011,f,80-84,0.9092,,,,,,
+Kasturi,p_art_dx,2011,m,80-84,0.9107,,,,,,
+Kasturi,p_dx,2017,f,15-19,0.7736,,,,0.7689,,-0.0047
+Kasturi,p_dx,2017,m,15-19,0.6395,,,,0.9335,,0.2940
+Kasturi,p_dx,2017,f,20-24,0.6900,,,,0.7551,,0.0651
+Kasturi,p_dx,2017,m,20-24,0.5360,,,,0.3841,,-0.1519
+Kasturi,p_dx,2017,f,25-29,0.7070,,,,0.8654,,0.1584
+Kasturi,p_dx,2017,m,25-29,0.5561,,,,0.4577,,-0.0983
+Kasturi,p_dx,2017,f,30-34,0.8382,,,,0.9349,,0.0968
+Kasturi,p_dx,2017,m,30-34,0.7289,,,,0.6948,,-0.0341
+Kasturi,p_dx,2017,f,35-39,0.8957,,,,0.9758,,0.0802
+Kasturi,p_dx,2017,m,35-39,0.8167,,,,0.7884,,-0.0283
+Kasturi,p_dx,2017,f,40-44,0.9144,,,,0.9869,,0.0725
+Kasturi,p_dx,2017,m,40-44,0.8472,,,,0.8500,,0.0028
+Kasturi,p_dx,2017,f,45-49,0.9446,,,,0.9813,,0.0368
+Kasturi,p_dx,2017,m,45-49,0.8985,,,,0.9158,,0.0174
+Kasturi,p_dx,2017,f,50-54,0.9454,,,,0.9670,,0.0216
+Kasturi,p_dx,2017,m,50-54,0.8998,,,,0.9985,,0.0987
+Kasturi,p_dx,2017,f,55-59,0.9230,,,,0.9122,,-0.0108
+Kasturi,p_dx,2017,m,55-59,0.8616,,,,1.0000,,0.1384
+Kasturi,p_dx,2017,f,60-64,0.9212,,,,0.9497,,0.0284
+Kasturi,p_dx,2017,m,60-64,0.8586,,,,0.9998,,0.1412
+Kasturi,p_dx,2017,f,65-69,0.9206,,,,0.9527,,0.0321
+Kasturi,p_dx,2017,m,65-69,0.8576,,,,1.0000,,0.1424
+Kasturi,p_dx,2017,f,70-74,0.9457,,,,1.0000,,0.0543
+Kasturi,p_dx,2017,m,70-74,0.9004,,,,1.0000,,0.0996
+Kasturi,p_dx,2017,f,75-79,0.9570,,,,1.0000,,0.0430
+Kasturi,p_dx,2017,m,75-79,0.9203,,,,1.0000,,0.0797
+Kasturi,p_dx,2017,f,80-84,0.9410,,,,,,
+Kasturi,p_dx,2017,m,80-84,0.8922,,,,1.0000,,0.1078
+Kasturi,p_art_dx,2017,f,15-19,0.8957,,,,0.8731,,-0.0225
+Kasturi,p_art_dx,2017,m,15-19,0.8974,,,,0.9046,,0.0072
+Kasturi,p_art_dx,2017,f,20-24,0.8451,,,,0.8230,,-0.0221
+Kasturi,p_art_dx,2017,m,20-24,0.8476,,,,0.9530,,0.1054
+Kasturi,p_art_dx,2017,f,25-29,0.8295,,,,0.8815,,0.0520
+Kasturi,p_art_dx,2017,m,25-29,0.8322,,,,0.9534,,0.1212
+Kasturi,p_art_dx,2017,f,30-34,0.7986,,,,0.8602,,0.0616
+Kasturi,p_art_dx,2017,m,30-34,0.8016,,,,0.9382,,0.1366
+Kasturi,p_art_dx,2017,f,35-39,0.8653,,,,0.8655,,0.0002
+Kasturi,p_art_dx,2017,m,35-39,0.8675,,,,0.9110,,0.0435
+Kasturi,p_art_dx,2017,f,40-44,0.9281,,,,0.8905,,-0.0376
+Kasturi,p_art_dx,2017,m,40-44,0.9294,,,,0.9159,,-0.0135
+Kasturi,p_art_dx,2017,f,45-49,0.8913,,,,0.9143,,0.0230
+Kasturi,p_art_dx,2017,m,45-49,0.8931,,,,0.9332,,0.0401
+Kasturi,p_art_dx,2017,f,50-54,0.9225,,,,0.9070,,-0.0156
+Kasturi,p_art_dx,2017,m,50-54,0.9239,,,,0.8407,,-0.0832
+Kasturi,p_art_dx,2017,f,55-59,0.9361,,,,0.9066,,-0.0295
+Kasturi,p_art_dx,2017,m,55-59,0.9372,,,,0.8369,,-0.1003
+Kasturi,p_art_dx,2017,f,60-64,0.9774,,,,0.8795,,-0.0979
+Kasturi,p_art_dx,2017,m,60-64,0.9778,,,,0.8574,,-0.1204
+Kasturi,p_art_dx,2017,f,65-69,0.9835,,,,0.9313,,-0.0521
+Kasturi,p_art_dx,2017,m,65-69,0.9838,,,,0.8671,,-0.1167
+Kasturi,p_art_dx,2017,f,70-74,0.9727,,,,0.8985,,-0.0741
+Kasturi,p_art_dx,2017,m,70-74,0.9732,,,,0.9016,,-0.0715
+Kasturi,p_art_dx,2017,f,75-79,0.9370,,,,1.0000,,0.0630
+Kasturi,p_art_dx,2017,m,75-79,0.9381,,,,0.9457,,0.0076
+Kasturi,p_art_dx,2017,f,80-84,0.9932,,,,,,
+Kasturi,p_art_dx,2017,m,80-84,0.9933,,,,1.0000,,0.0067
+Kasturi,p_dx,2021,f,15-19,0.9321,,,,0.8730,,-0.0591
+Kasturi,p_dx,2021,m,15-19,0.8770,,,,0.9654,,0.0884
+Kasturi,p_dx,2021,f,20-24,0.8995,,,,0.8585,,-0.0409
+Kasturi,p_dx,2021,m,20-24,0.8228,,,,0.7296,,-0.0933
+Kasturi,p_dx,2021,f,25-29,0.9065,,,,0.9458,,0.0393
+Kasturi,p_dx,2021,m,25-29,0.8343,,,,0.5829,,-0.2514
+Kasturi,p_dx,2021,f,30-34,0.9542,,,,0.9760,,0.0218
+Kasturi,p_dx,2021,m,30-34,0.9153,,,,0.7574,,-0.1579
+Kasturi,p_dx,2021,f,35-39,0.9718,,,,0.9935,,0.0216
+Kasturi,p_dx,2021,m,35-39,0.9471,,,,0.8354,,-0.1117
+Kasturi,p_dx,2021,f,40-44,0.9772,,,,0.9985,,0.0212
+Kasturi,p_dx,2021,m,40-44,0.9571,,,,0.8989,,-0.0582
+Kasturi,p_dx,2021,f,45-49,0.9856,,,,0.9993,,0.0137
+Kasturi,p_dx,2021,m,45-49,0.9727,,,,0.9535,,-0.0192
+Kasturi,p_dx,2021,f,50-54,0.9858,,,,1.0000,,0.0142
+Kasturi,p_dx,2021,m,50-54,0.9730,,,,0.9995,,0.0264
+Kasturi,p_dx,2021,f,55-59,0.9797,,,,0.9891,,0.0095
+Kasturi,p_dx,2021,m,55-59,0.9616,,,,1.0000,,0.0384
+Kasturi,p_dx,2021,f,60-64,0.9792,,,,0.9945,,0.0153
+Kasturi,p_dx,2021,m,60-64,0.9607,,,,1.0000,,0.0393
+Kasturi,p_dx,2021,f,65-69,0.9790,,,,0.9959,,0.0169
+Kasturi,p_dx,2021,m,65-69,0.9603,,,,1.0000,,0.0397
+Kasturi,p_dx,2021,f,70-74,0.9859,,,,1.0000,,0.0141
+Kasturi,p_dx,2021,m,70-74,0.9732,,,,1.0000,,0.0268
+Kasturi,p_dx,2021,f,75-79,0.9889,,,,1.0000,,0.0111
+Kasturi,p_dx,2021,m,75-79,0.9789,,,,1.0000,,0.0211
+Kasturi,p_dx,2021,f,80-84,0.9846,,,,,,
+Kasturi,p_dx,2021,m,80-84,0.9708,,,,1.0000,,0.0292
+Kasturi,p_art_dx,2021,f,15-19,0.9809,,,,0.9139,,-0.0670
+Kasturi,p_art_dx,2021,m,15-19,0.9812,,,,1.0000,,0.0188
+Kasturi,p_art_dx,2021,f,20-24,0.9702,,,,0.9066,,-0.0636
+Kasturi,p_art_dx,2021,m,20-24,0.9708,,,,1.0000,,0.0292
+Kasturi,p_art_dx,2021,f,25-29,0.9668,,,,0.9328,,-0.0340
+Kasturi,p_art_dx,2021,m,25-29,0.9674,,,,0.9438,,-0.0235
+Kasturi,p_art_dx,2021,f,30-34,0.9595,,,,0.9285,,-0.0310
+Kasturi,p_art_dx,2021,m,30-34,0.9602,,,,0.9055,,-0.0547
+Kasturi,p_art_dx,2021,f,35-39,0.9746,,,,0.9632,,-0.0114
+Kasturi,p_art_dx,2021,m,35-39,0.9751,,,,0.9974,,0.0223
+Kasturi,p_art_dx,2021,f,40-44,0.9872,,,,0.9764,,-0.0108
+Kasturi,p_art_dx,2021,m,40-44,0.9874,,,,0.9976,,0.0102
+Kasturi,p_art_dx,2021,f,45-49,0.9800,,,,0.9800,,0.0000
+Kasturi,p_art_dx,2021,m,45-49,0.9804,,,,0.9985,,0.0181
+Kasturi,p_art_dx,2021,f,50-54,0.9861,,,,0.9674,,-0.0188
+Kasturi,p_art_dx,2021,m,50-54,0.9864,,,,0.9443,,-0.0421
+Kasturi,p_art_dx,2021,f,55-59,0.9887,,,,0.9714,,-0.0173
+Kasturi,p_art_dx,2021,m,55-59,0.9889,,,,0.9475,,-0.0414
+Kasturi,p_art_dx,2021,f,60-64,0.9961,,,,0.9660,,-0.0301
+Kasturi,p_art_dx,2021,m,60-64,0.9962,,,,0.9641,,-0.0321
+Kasturi,p_art_dx,2021,f,65-69,0.9972,,,,0.9546,,-0.0426
+Kasturi,p_art_dx,2021,m,65-69,0.9972,,,,0.9801,,-0.0172
+Kasturi,p_art_dx,2021,f,70-74,0.9953,,,,0.9838,,-0.0116
+Kasturi,p_art_dx,2021,m,70-74,0.9954,,,,0.9707,,-0.0247
+Kasturi,p_art_dx,2021,f,75-79,0.9889,,,,1.0000,,0.0111
+Kasturi,p_art_dx,2021,m,75-79,0.9891,,,,0.9369,,-0.0522
+Kasturi,p_art_dx,2021,f,80-84,0.9989,,,,,,
+Kasturi,p_art_dx,2021,m,80-84,0.9989,,,,0.9694,,-0.0295
+SHIMS incidence (% per year),incidence,2017,m,15-24,0.7900,0.0700,1.5000,,0.5147,0.1568,-0.2753
+SHIMS incidence (% per year),incidence,2017,f,15-24,1.8700,0.7600,2.9800,,2.6475,0.4819,0.7775
+SHIMS incidence (% per year),incidence,2017,all,15-24,1.3100,0.6600,1.9600,,1.5368,0.2310,0.2268
+SHIMS incidence (% per year),incidence,2017,m,25-34,1.5000,0.0000,3.0600,,2.2533,0.4040,0.7533
+SHIMS incidence (% per year),incidence,2017,f,25-34,1.8400,0.1700,3.4800,,2.2236,0.5609,0.3836
+SHIMS incidence (% per year),incidence,2017,all,25-34,1.6500,0.4900,2.8000,,2.2405,0.4476,0.5905
+SHIMS incidence (% per year),incidence,2017,m,35-49,0.6800,0.0000,1.8500,,0.7741,0.2229,0.0941
+SHIMS incidence (% per year),incidence,2017,f,35-49,2.4000,0.4500,4.3300,,0.3481,0.2175,-2.0519
+SHIMS incidence (% per year),incidence,2017,all,35-49,1.6500,0.4400,2.8500,,0.5814,0.1623,-1.0686
+SHIMS incidence (% per year),incidence,2017,m,15-49,0.9900,0.3200,1.6600,,1.1504,0.1532,0.1604
+SHIMS incidence (% per year),incidence,2017,f,15-49,1.9900,1.0900,2.8800,,2.0074,0.2959,0.0174
+SHIMS incidence (% per year),incidence,2017,all,15-49,1.4800,0.9300,2.0300,,1.5398,0.1845,0.0598
+SHIMS incidence (% per year),incidence,2017,m,15+,1.0200,0.4700,1.5700,,0.9949,0.1302,-0.0251
+SHIMS incidence (% per year),incidence,2017,f,15+,1.7000,0.9600,2.4400,,1.6087,0.2369,-0.0913
+SHIMS incidence (% per year),incidence,2017,all,15+,1.3600,0.9200,1.8000,,1.2855,0.1509,-0.0745
+SHIMS incidence (% per year),incidence,2021,m,15-24,0.1700,0.0000,0.5000,,0.4017,0.2137,0.2317
+SHIMS incidence (% per year),incidence,2021,f,15-24,1.6300,0.4300,2.8100,,1.8732,0.4270,0.2432
+SHIMS incidence (% per year),incidence,2021,all,15-24,0.8600,0.2600,1.4500,,1.1196,0.2782,0.2596
+SHIMS incidence (% per year),incidence,2021,m,25-34,0.3800,0.0000,1.1300,,1.6140,0.5270,1.2340
+SHIMS incidence (% per year),incidence,2021,f,25-34,1.9000,0.4500,3.3300,,1.8817,0.5199,-0.0183
+SHIMS incidence (% per year),incidence,2021,all,25-34,1.0500,0.2900,1.8100,,1.7261,0.4502,0.6761
+SHIMS incidence (% per year),incidence,2021,m,35-49,0.0000,0.0000,1.5400,,0.8544,0.2876,0.8544
+SHIMS incidence (% per year),incidence,2021,f,35-49,0.4200,0.0000,1.2400,,0.2754,0.1613,-0.1446
+SHIMS incidence (% per year),incidence,2021,all,35-49,0.1900,0.0000,0.5700,,0.6015,0.1981,0.4115
+SHIMS incidence (% per year),incidence,2021,m,50+,0.0000,0.0000,1.7400,,0.0130,0.0412,0.0130
+SHIMS incidence (% per year),incidence,2021,f,50+,0.0000,0.0000,0.8600,,0.0000,0.0000,0.0000
+SHIMS incidence (% per year),incidence,2021,all,50+,0.0000,0.0000,0.5800,,0.0056,0.0178,0.0056
+SHIMS incidence (% per year),incidence,2021,m,15-49,0.2000,0.0000,0.4800,,0.9098,0.2588,0.7098
+SHIMS incidence (% per year),incidence,2021,f,15-49,1.4500,0.6900,2.2000,,1.4948,0.2496,0.0448
+SHIMS incidence (% per year),incidence,2021,all,15-49,0.7700,0.3900,1.1500,,1.1768,0.2209,0.4068
+SHIMS incidence (% per year),incidence,2021,m,15+,0.1700,0.0000,0.4100,,0.7894,0.2252,0.6194
+SHIMS incidence (% per year),incidence,2021,f,15+,1.1100,0.5300,1.6800,,1.2017,0.1940,0.0917
+SHIMS incidence (% per year),incidence,2021,all,15+,0.6200,0.3100,0.9300,,0.9851,0.1830,0.3651

@@ -1,0 +1,15 @@
+{
+  "beta_m2f": 0.012876412828021398,
+  "rel_beta_f2m": 0.4178301157316123,
+  "s_f_young": 1.0302434479599958,
+  "age_gap_shift": -0.6479545215716845,
+  "age_gap_sd_mult": 0.7023563119433759,
+  "prop_f0": 0.6157721594704906,
+  "prop_m0": 0.6135514227380012,
+  "loss": 174.56605287756616,
+  "mae_prev": 0.03553764617167794,
+  "bias_prev": -0.008681597246655829,
+  "n_within_ci": 33,
+  "fitted_on": "starsim 4.0.0rc5, stisim v4 @ 9fe22a2; 027d cascade inputs fixed",
+  "seeds_final": 8
+}
